@@ -19,7 +19,7 @@ Semester Genap 2021/2022
 ## Memulai
 
 1. **Fork** repositori ini ke akun GitLab kamu. Cara untuk **fork** repositori Tugas Pemrograman, hampir sama dengan
-   cara fork repositori Latihan Tugas Pemrograman yang dapat dilihat [disini](latihan-tp)
+   cara fork repositori Latihan Tugas Pemrograman yang dapat dilihat [disini][latihan-tp]
 2. Jika visibilitas repositori masih belum private, ubah visibilitas repositori hasil *fork* tersebut menjadi ***private*** melalui
    *Settings* (di sebelah kiri bawah) > *General* >
    *Visibility, project features, permissions* > *Project visibility* >
