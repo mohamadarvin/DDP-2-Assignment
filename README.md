@@ -8,13 +8,20 @@ Semester Genap 2021/2022
 ## Daftar Isi
 
 1. Soal Tugas Pemrograman
-2. [Memulai](#memulai)
-3. [Mengerjakan Tugas Pemrograman](#mengerjakan-tugas-pemrograman)
-4. [Mendapatkan pembaruan dari *upstream*](#mendapatkan-pembaruan-dari-upstream)
-5. [Menyelesaikan konflik](#menyelesaikan-konflik)
-6. [Informasi kontak](#informasi-kontak)
-7. [Atribusi](#atribusi)
-8. [Lisensi](#lisensi)
+   * [Tugas Pemrograman 1][tp1]
+2. [Latihan Tugas Pemrograman](#latihan-tugas-pemrograman)
+3. [Memulai](#memulai)
+4. [Mengerjakan Tugas Pemrograman](#mengerjakan-tugas-pemrograman)
+5. [Mendapatkan pembaruan dari *upstream*](#mendapatkan-pembaruan-dari-upstream)
+6. [Menyelesaikan konflik](#menyelesaikan-konflik)
+7. [Informasi kontak](#informasi-kontak)
+8. [Atribusi](#atribusi)
+9. [Lisensi](#lisensi)
+
+## Latihan Tugas Pemrograman
+
+Sebelum memulai mengerjakan tugas pemrograman, sangat disarankan untuk mengerjakan [Latihan Tugas Pemrograman][latihan-tp]
+terlebih dahulu.
 
 ## Memulai
 
@@ -174,3 +181,4 @@ yang telah dijelaskan dalam perkuliahan.
 [repositori-2020-2021-genap]: https://gitlab.com/DDP2-CSUI/2020-2021-genap/assignments
 [lisensi-bsd]: LICENSE
 [lisensi-cc]: https://creativecommons.org/licenses/by-sa/4.0
+[tp1]: assignment1/README.md
