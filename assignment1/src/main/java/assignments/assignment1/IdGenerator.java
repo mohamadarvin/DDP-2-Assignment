@@ -113,40 +113,82 @@ public class IdGenerator {
         return false;
                
     }
+
+    /*
+     * Method checkSumC adalah method untuk menggabungkan
+     * Nilai Checksum "C" dengan ID keanggotaan
+     */
+    public static String checkSumC(String idAngggotaWithoutCheckSumC) {
+        // Inisiasi nilai sumC
+        int sumC = 0;           
+
+        // Perhitungan sum “C”
+        for (int i = 0, j = idAngggotaWithoutCheckSumC.length() ; i < idAngggotaWithoutCheckSumC.length(); i++, j--) {
+            sumC += getValueFromChar(idAngggotaWithoutCheckSumC.charAt(i)) * j;
+        }
+
+        // ID keanggotaan dengan Checksum “C”
+        return idAngggotaWithoutCheckSumC + getCharFromValue(sumC % 36);
+    }
+
+    /*
+     * Method checkSumC adalah method untuk menggabungkan
+     * Nilai Checksum "k" dengan ID keanggotaan
+     */
+    public static String checkSumK(String idAngggotaWithoutCheckSumK) {
+
+        // Inisiasi nilai sumK
+        int sumK = 0;           
+        
+        // Perhitungan sum “K”
+        for ( int i = 0, j = idAngggotaWithoutCheckSumK.length() ; i < idAngggotaWithoutCheckSumK.length(); i++, j--) {
+            sumK += getValueFromChar(idAngggotaWithoutCheckSumK.charAt(i)) * j;
+        }
+
+        // ID keanggotaan dengan Checksum “K”
+        return idAngggotaWithoutCheckSumK + getCharFromValue(sumK % 36);
+    }
+
+    /*
+     * Method jumlahKarakterYangSesuaiKode93 adalah method untuk menghtung
+     * jumlah karakter yang sesuai dengan Code 93
+     */
+    public static int jumlahKarakterYangSesuaiKode93(String idAnggota) {
+
+        // Inisiasi nilai count
+        int count = 0 ;          
+
+        // Validasi tiap karakter ID keanggotaan
+        for (int x = 0 ; x < idAnggota.length() ; x++) {
+            for(int y = 0 ; y < valueToChar.length ; y++) {
+                if (idAnggota.charAt(x) == getCharFromValue(y)) {
+                    count ++;
+                }
+            }
+        }
+        
+        // Total karakter yang valid
+        return count;        
+    }
+
+
+
     /*
      * Method generateId adalah method untuk membuat ID keanggotaan perpustakaan
      */
-    public static String generateId(String programStudi, String angkatan, String tanggalLahir) {       
+    public static String generateId(String programStudi, String angkatan, String tanggalLahir) { 
+
         // Validasi input
         if ((isProgramStudi(programStudi)) && (isAngkatan(angkatan)) 
            && (tanggalLahir.length() == 10)  && ((tanggalLahir.substring(2, 3)).equals("/")) && 
            ((tanggalLahir.substring(5, 6)).equals("/")) ) {
 
-            String idAnggota = programStudi + angkatan.substring(2) + tanggalLahir.substring(0, 2) + 
-            tanggalLahir.substring(3, 5) + tanggalLahir.substring(8, 10);
+            // ID keanggotaan tanpa Checksum
+            String idAngggotaWithoutCheckSum = programStudi + angkatan.substring(2) + tanggalLahir.substring(0, 2) + 
+            tanggalLahir.substring(3, 5) + tanggalLahir.substring(8, 10);            
             
-            int sumC = 0, sumK = 0;         // Inisiasi nilai sumC dan sumK
-
-            // Perhitungan sum “C”
-            for (int i = 0, j = idAnggota.length() ; i < idAnggota.length(); i++, j--) {
-                sumC += getValueFromChar(idAnggota.charAt(i)) * j;
-            }
-            // karakter Checksum “C”
-            int checkSumC = sumC % 36;
-            char charCheckSumC = getCharFromValue(checkSumC);
-            idAnggota += charCheckSumC;
-
-            // Perhitungan sum “K”
-            for ( int i = 0, j = idAnggota.length() ; i < idAnggota.length(); i++, j--) {
-                sumK += getValueFromChar(idAnggota.charAt(i)) * j;
-            }
-            
-            // karakter Checksum “K”
-            int checkSumK = sumK % 36;
-            char charCheckSumK =  getCharFromValue(checkSumK);
-            idAnggota += charCheckSumK;
-
-            return "ID Anggota: " + idAnggota;
+            // ID keanggotaan dengan Checksum “C” dan Checksum “K”
+            return "ID Anggota: " + checkSumK(checkSumC(idAngggotaWithoutCheckSum));
             
         
         }              
@@ -160,50 +202,16 @@ public class IdGenerator {
      */
     public static boolean checkValidity(String idAnggota) {
 
-        // Validasi jumlah karakter
-        if (idAnggota.length() == 13) {
-            int count = 0 ;          // Inisiasi nilai count
+        // Validasi checksum "C" dan checksum “K” pada ID keanggotaan
+        if (jumlahKarakterYangSesuaiKode93(idAnggota) == 13) {
+            String idAngggotaWithoutCheckSum = idAnggota.substring(0, 11);            
 
-            // Validasi tipe karakter
-            for (int x = 0 ; x < idAnggota.length() ; x++) {
-                for(int y = 0 ; y < valueToChar.length ; y++) {
-                    if (idAnggota.charAt(x) == getCharFromValue(y)) {
-                        count ++;
-                    }
-                }
+            // ID Anggota valid
+            if (checkSumK(checkSumC(idAngggotaWithoutCheckSum)).equals(idAnggota)){
+                return true;
             }
-
-            // Validasi karakter  checksum "C" dan checksum “K”
-            if (count == 13) {
-                String idAngggotaWithoutCheckSum = idAnggota.substring(0, 11);
-                int sumC = 0, sumK = 0;         // Inisiasi nilai sumC dan sumK
-
-                // Perhitungan sum “C”
-                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++, j--) { 
-                    sumC += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
-                }
-
-                // karakter Checksum “C”
-                int checkSumC = sumC % 36;
-                char charCheckSumC = getCharFromValue(checkSumC);
-                idAngggotaWithoutCheckSum += charCheckSumC;
-
-                // Perhitungan sum “K”
-                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++ ,j--) {
-                    sumK += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
-                }
-                
-                // karakter Checksum “K”
-                int checkSumK = sumK % 36;
-                char charCheckSumK =  getCharFromValue(checkSumK);
-                idAngggotaWithoutCheckSum += charCheckSumK;
-
-                // ID Anggota valid
-                if (idAngggotaWithoutCheckSum.equals(idAnggota)){
-                    return true;
-                }
             }
-        }
+        
 
         // iD Anggota tidak valid
         return false;       
