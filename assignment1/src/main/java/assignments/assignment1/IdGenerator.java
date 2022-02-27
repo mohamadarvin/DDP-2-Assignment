@@ -104,17 +104,12 @@ public class IdGenerator {
      * jika tahun angkatan valid
      */
     public static boolean isAngkatan(String angkatan) {
-        return (angkatan.equals("2000")) || (angkatan.equals("2001")) ||
-               (angkatan.equals("2002")) || (angkatan.equals("2003")) ||
-               (angkatan.equals("2004")) || (angkatan.equals("2005")) ||
-               (angkatan.equals("2006")) || (angkatan.equals("2007")) ||
-               (angkatan.equals("2008")) || (angkatan.equals("2009")) ||
-               (angkatan.equals("2010")) || (angkatan.equals("2011")) ||
-               (angkatan.equals("2012")) || (angkatan.equals("2013")) ||
-               (angkatan.equals("2014")) || (angkatan.equals("2015")) ||
-               (angkatan.equals("2016")) || (angkatan.equals("2017")) ||
-               (angkatan.equals("2018")) || (angkatan.equals("2019")) ||
-               (angkatan.equals("2020")) || (angkatan.equals("2021"));
+        for (int i = 2000 ; i < 2022 ; i++){
+            String tahunAngkatanValid = "" + i;
+            if(angkatan.equals(tahunAngkatanValid))
+                return true;
+        }
+        return false;
                
     }
     /*
