@@ -120,19 +120,19 @@ public class IdGenerator {
     /*
      * Method generateId adalah method untuk membuat ID keanggotaan perpustakaan
      */
-    public static String generateId(String programStudi, String angkatan, String tanggalLahir){       
+    public static String generateId(String programStudi, String angkatan, String tanggalLahir) {       
         // Validasi input
         if ((isProgramStudi(programStudi)) && (isAngkatan(angkatan)) 
            && (tanggalLahir.length() == 10)  && ((tanggalLahir.substring(2, 3)).equals("/")) && 
-           ((tanggalLahir.substring(5, 6)).equals("/")) ){
+           ((tanggalLahir.substring(5, 6)).equals("/")) ) {
 
-            String idAnggota = programStudi + angkatan.substring(2) + tanggalLahir.substring(0,2) + 
-            tanggalLahir.substring(3,5) + tanggalLahir.substring(8,10);
+            String idAnggota = programStudi + angkatan.substring(2) + tanggalLahir.substring(0, 2) + 
+            tanggalLahir.substring(3, 5) + tanggalLahir.substring(8, 10);
             
             int sumC = 0, sumK = 0;         // Inisiasi nilai sumC dan sumK
 
             // Perhitungan sum “C”
-            for ( int i = 0,j = idAnggota.length() ; i < idAnggota.length(); i++,j--){
+            for (int i = 0, j = idAnggota.length() ; i < idAnggota.length(); i++, j--) {
                 sumC += getValueFromChar(idAnggota.charAt(i)) * j;
             }
             // karakter Checksum “C”
@@ -141,7 +141,7 @@ public class IdGenerator {
             idAnggota += charCheckSumC;
 
             // Perhitungan sum “K”
-            for ( int i = 0,j = idAnggota.length() ; i < idAnggota.length(); i++,j--){
+            for ( int i = 0, j = idAnggota.length() ; i < idAnggota.length(); i++, j--) {
                 sumK += getValueFromChar(idAnggota.charAt(i)) * j;
             }
             
@@ -165,25 +165,25 @@ public class IdGenerator {
     public static boolean checkValidity(String idAnggota) {
 
         // Validasi jumlah karakter
-        if (idAnggota.length() == 13){
+        if (idAnggota.length() == 13) {
             int count = 0 ;          // Inisiasi nilai count
 
             // Validasi tipe karakter
-            for (int x = 0 ; x<idAnggota.length() ; x++){
-                for(int y = 0 ; y < valueToChar.length ; y++){
-                    if (idAnggota.charAt(x) == getCharFromValue(y)){
+            for (int x = 0 ; x < idAnggota.length() ; x++) {
+                for(int y = 0 ; y < valueToChar.length ; y++) {
+                    if (idAnggota.charAt(x) == getCharFromValue(y)) {
                         count ++;
                     }
                 }
             }
 
             // Validasi karakter  checksum "C" dan checksum “K”
-            if (count == 13){
+            if (count == 13) {
                 String idAngggotaWithoutCheckSum = idAnggota.substring(0, 11);
                 int sumC = 0, sumK = 0;         // Inisiasi nilai sumC dan sumK
 
                 // Perhitungan sum “C”
-                for ( int i = 0,j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++,j--){
+                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++, j--){ 
                     sumC += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
                 }
 
@@ -193,7 +193,7 @@ public class IdGenerator {
                 idAngggotaWithoutCheckSum += charCheckSumC;
 
                 // Perhitungan sum “K”
-                for ( int i = 0,j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++,j--){
+                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++ ,j--){
                     sumK += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
                 }
                 
