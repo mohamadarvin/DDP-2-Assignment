@@ -106,7 +106,7 @@ public class IdGenerator {
     public static boolean isAngkatan(String angkatan) {
         for (int i = 2000 ; i < 2022 ; i++){
             String tahunAngkatanValid = "" + i;
-            if(angkatan.equals(tahunAngkatanValid)){
+            if(angkatan.equals(tahunAngkatanValid)) {
                 return true;
             }
         }
