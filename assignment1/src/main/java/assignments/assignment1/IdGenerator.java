@@ -183,7 +183,7 @@ public class IdGenerator {
                 int sumC = 0, sumK = 0;         // Inisiasi nilai sumC dan sumK
 
                 // Perhitungan sum “C”
-                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++, j--){ 
+                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++, j--) { 
                     sumC += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
                 }
 
@@ -193,7 +193,7 @@ public class IdGenerator {
                 idAngggotaWithoutCheckSum += charCheckSumC;
 
                 // Perhitungan sum “K”
-                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++ ,j--){
+                for ( int i = 0, j = idAngggotaWithoutCheckSum.length() ; i < idAngggotaWithoutCheckSum.length(); i++ ,j--) {
                     sumK += getValueFromChar(idAngggotaWithoutCheckSum.charAt(i)) * j;
                 }
                 
