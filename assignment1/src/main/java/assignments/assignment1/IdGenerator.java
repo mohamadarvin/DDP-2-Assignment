@@ -119,6 +119,7 @@ public class IdGenerator {
      * Nilai Checksum "C" dengan ID keanggotaan
      */
     public static String checkSumC(String idAngggotaWithoutCheckSumC) {
+
         // Inisiasi nilai sumC
         int sumC = 0;           
 
@@ -136,7 +137,7 @@ public class IdGenerator {
      * Nilai Checksum "k" dengan ID keanggotaan
      */
     public static String checkSumK(String idAngggotaWithoutCheckSumK) {
-
+        
         // Inisiasi nilai sumK
         int sumK = 0;           
         
@@ -177,7 +178,7 @@ public class IdGenerator {
      * Method generateId adalah method untuk membuat ID keanggotaan perpustakaan
      */
     public static String generateId(String programStudi, String angkatan, String tanggalLahir) { 
-
+        
         // Validasi input
         if ((isProgramStudi(programStudi)) && (isAngkatan(angkatan)) 
            && (tanggalLahir.length() == 10)  && ((tanggalLahir.substring(2, 3)).equals("/")) && 
@@ -190,7 +191,6 @@ public class IdGenerator {
             // ID keanggotaan dengan Checksum “C” dan Checksum “K”
             return "ID Anggota: " + checkSumK(checkSumC(idAngggotaWithoutCheckSum));
             
-        
         }              
         return "Input tidak valid!";        
             
@@ -210,10 +210,10 @@ public class IdGenerator {
             if (checkSumK(checkSumC(idAngggotaWithoutCheckSum)).equals(idAnggota)){
                 return true;
             }
-            }
+        }
         
 
         // iD Anggota tidak valid
-        return false;       
+        return false;        
     }
 }
