@@ -36,7 +36,7 @@ public class IdGenerator {
                 String angkatan = input.nextLine();
                 System.out.print("Tanggal Lahir: ");
                 String tanggalLahir = input.nextLine();
-                
+
                 System.out.println(generateId(programStudi, angkatan, tanggalLahir));
             } else if (menu == 2) {
                 System.out.print("ID Anggota: ");
@@ -54,7 +54,8 @@ public class IdGenerator {
     }
 
     /*
-     * Method buildMapCodeToNumber adalah method untuk membuat mapping reference numbers Code 93
+     * Method buildMapCodeToNumber adalah method untuk membuat mapping reference
+     * numbers Code 93
      */
     public static void buildMapCharToValue() {
         for (int count = 0; count < valueToChar.length; count++) {
@@ -63,7 +64,8 @@ public class IdGenerator {
     }
 
     /*
-     * Method getCharFromValue adalah method yang akan mengembalikan Code 93 dari value yang diberikan
+     * Method getCharFromValue adalah method yang akan mengembalikan Code 93 dari
+     * value yang diberikan
      */
     private static char getCharFromValue(int value) {
 
@@ -71,15 +73,16 @@ public class IdGenerator {
     }
 
     /*
-     * Method getValueFromChar adalah method yang akan mengembalikan value dari Code 93 yang diberikan
+     * Method getValueFromChar adalah method yang akan mengembalikan value dari Code
+     * 93 yang diberikan
      */
     private static int getValueFromChar(char character) {
         return charToValue.get(character);
     }
 
-     /*
-      * Method printMenu adalah method untuk memberi tau menu yang tersedia
-      */
+    /*
+     * Method printMenu adalah method untuk memberi tau menu yang tersedia
+     */
     private static void printMenu() {
         System.out.println("--------------------------------------------");
         System.out.println("Menu yang tersedia:");
@@ -95,8 +98,8 @@ public class IdGenerator {
      */
     public static boolean isProgramStudi(String programStudi) {
         return (programStudi.equals("SIK")) || programStudi.equals("SSI") ||
-               (programStudi.equals("MIK")) || (programStudi.equals("MTI")) ||
-               (programStudi.equals("DIK"));
+                (programStudi.equals("MIK")) || (programStudi.equals("MTI")) ||
+                (programStudi.equals("DIK"));
     }
 
     /*
@@ -104,14 +107,8 @@ public class IdGenerator {
      * jika tahun angkatan valid
      */
     public static boolean isAngkatan(String angkatan) {
-        for (int i = 2000 ; i < 2022 ; i++){
-            String tahunAngkatanValid = "" + i;
-            if(angkatan.equals(tahunAngkatanValid)) {
-                return true;
-            }
-        }
-        return false;
-               
+        int intAngkatan = Integer.parseInt(angkatan);
+        return intAngkatan >= 2000 && intAngkatan <= 2021;
     }
 
     /*
@@ -121,10 +118,10 @@ public class IdGenerator {
     public static String checkSumC(String idAngggotaWithoutCheckSumC) {
 
         // Inisiasi nilai sumC
-        int sumC = 0;           
+        int sumC = 0;
 
         // Perhitungan sum “C”
-        for (int i = 0, j = idAngggotaWithoutCheckSumC.length() ; i < idAngggotaWithoutCheckSumC.length(); i++, j--) {
+        for (int i = 0, j = idAngggotaWithoutCheckSumC.length(); i < idAngggotaWithoutCheckSumC.length(); i++, j--) {
             sumC += getValueFromChar(idAngggotaWithoutCheckSumC.charAt(i)) * j;
         }
 
@@ -137,12 +134,12 @@ public class IdGenerator {
      * Nilai Checksum "k" dengan ID keanggotaan
      */
     public static String checkSumK(String idAngggotaWithoutCheckSumK) {
-        
+
         // Inisiasi nilai sumK
-        int sumK = 0;           
-        
+        int sumK = 0;
+
         // Perhitungan sum “K”
-        for ( int i = 0, j = idAngggotaWithoutCheckSumK.length() ; i < idAngggotaWithoutCheckSumK.length(); i++, j--) {
+        for (int i = 0, j = idAngggotaWithoutCheckSumK.length(); i < idAngggotaWithoutCheckSumK.length(); i++, j--) {
             sumK += getValueFromChar(idAngggotaWithoutCheckSumK.charAt(i)) * j;
         }
 
@@ -157,63 +154,60 @@ public class IdGenerator {
     public static int jumlahKarakterYangSesuaiKode93(String idAnggota) {
 
         // Inisiasi nilai count
-        int count = 0 ;          
+        int count = 0;
 
         // Validasi tiap karakter ID keanggotaan
-        for (int x = 0 ; x < idAnggota.length() ; x++) {
-            for(int y = 0 ; y < valueToChar.length ; y++) {
+        for (int x = 0; x < idAnggota.length(); x++) {
+            for (int y = 0; y < valueToChar.length; y++) {
                 if (idAnggota.charAt(x) == getCharFromValue(y)) {
-                    count ++;
+                    count++;
                 }
             }
         }
-        
+
         // Total karakter yang valid
-        return count;        
+        return count;
     }
-
-
 
     /*
      * Method generateId adalah method untuk membuat ID keanggotaan perpustakaan
      */
-    public static String generateId(String programStudi, String angkatan, String tanggalLahir) { 
-        
+    public static String generateId(String programStudi, String angkatan, String tanggalLahir) {
+
         // Validasi input
-        if ((isProgramStudi(programStudi)) && (isAngkatan(angkatan)) 
-           && (tanggalLahir.length() == 10)  && ((tanggalLahir.substring(2, 3)).equals("/")) && 
-           ((tanggalLahir.substring(5, 6)).equals("/")) ) {
+        if ((isProgramStudi(programStudi)) && (isAngkatan(angkatan))
+                && (tanggalLahir.length() == 10) && ((tanggalLahir.substring(2, 3)).equals("/")) &&
+                ((tanggalLahir.substring(5, 6)).equals("/"))) {
 
             // ID keanggotaan tanpa Checksum
-            String idAngggotaWithoutCheckSum = programStudi + angkatan.substring(2) + tanggalLahir.substring(0, 2) + 
-            tanggalLahir.substring(3, 5) + tanggalLahir.substring(8, 10);            
-            
+            String idAngggotaWithoutCheckSum = programStudi + angkatan.substring(2) + tanggalLahir.substring(0, 2) +
+                    tanggalLahir.substring(3, 5) + tanggalLahir.substring(8, 10);
+
             // ID keanggotaan dengan Checksum “C” dan Checksum “K”
             return "ID Anggota: " + checkSumK(checkSumC(idAngggotaWithoutCheckSum));
-            
-        }              
-        return "Input tidak valid!";        
-            
+
+        }
+        return "Input tidak valid!";
+
     }
 
     /*
-     * Method checkValidity adalah method untuk mengecek validitas ID keanggotaan perpustakaan
+     * Method checkValidity adalah method untuk mengecek validitas ID keanggotaan
+     * perpustakaan
      *
      */
     public static boolean checkValidity(String idAnggota) {
 
         // Validasi checksum "C" dan checksum “K” pada ID keanggotaan
         if (jumlahKarakterYangSesuaiKode93(idAnggota) == 13) {
-            String idAngggotaWithoutCheckSum = idAnggota.substring(0, 11);            
+            String idAngggotaWithoutCheckSum = idAnggota.substring(0, 11);
 
             // ID Anggota valid
-            if (checkSumK(checkSumC(idAngggotaWithoutCheckSum)).equals(idAnggota)){
-                return true;
-            }
+            return (checkSumK(checkSumC(idAngggotaWithoutCheckSum)).equals(idAnggota));
+
         }
-        
 
         // iD Anggota tidak valid
-        return false;        
+        return false;
     }
 }
