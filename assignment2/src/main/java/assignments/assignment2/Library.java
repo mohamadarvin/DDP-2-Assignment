@@ -12,8 +12,8 @@ public class Library {
     private Member[] members;
     private Book[] books;
     private Category[] categories;
-    static HashMap<Character, Integer> charToValue = new HashMap<>(36);
-    static char[] valueToChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private static HashMap<Character, Integer> charToValue = new HashMap<>(36);
+    private static char[] valueToChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     public static void main(String[] args) {
         Library program = new Library();
@@ -92,9 +92,9 @@ public class Library {
         return null;
     }
 
-    public Member mencariMember(String id){
-        for (int i = 0; i < members.length; i++){
-            if(members[i].getId().equalsIgnoreCase(id)){
+    public Member mencariMember(String id) {
+        for (int i = 0; i < members.length; i++) {
+            if (members[i].getId().equalsIgnoreCase(id)) {
                 return members[i];
             }
         }
@@ -215,7 +215,6 @@ public class Library {
                         members[0] = newMember;
                         System.out.println(newMember);
                     }
-                
 
                     else {
                         Member[] newMembers = new Member[members.length + 1];
@@ -326,33 +325,30 @@ public class Library {
                 System.out.print("Tanggal Peminjaman: ");
                 String tanggalPeminjaman = input.nextLine();
 
-                if(membandingkanId(idAnggota) == false){
+                if (membandingkanId(idAnggota) == false) {
                     System.out.println("Anggota dengan ID " + idAnggota + " tidak ditemukan");
                 }
-                
+
                 else if (membandingkanBuku(judulBuku, penulisBuku) == null) {
                     System.out.println("Buku " + judulBuku + " oleh " + penulisBuku + " tidak ditemukan");
 
-                } else if ((membandingkanBuku(judulBuku, penulisBuku).getStok()==0)) {
+                } else if ((membandingkanBuku(judulBuku, penulisBuku).getStok() == 0)) {
                     System.out.println("Buku " + judulBuku + " oleh " + penulisBuku + " tidak tersedia");
 
-                } 
-                else if (mencariMember(idAnggota).getTotalBukuYangDipinjam() >= 3){
-                    System.out.println("Jumlah buku yang sedang dipinjam sudah mencapai batas maksimal");                    
-                }
-                else if (mencariMember(idAnggota).getFine() >= 5000){
+                } else if (mencariMember(idAnggota).getTotalBukuYangDipinjam() >= 3) {
+                    System.out.println("Jumlah buku yang sedang dipinjam sudah mencapai batas maksimal");
+                } else if (mencariMember(idAnggota).getFine() >= 5000) {
                     System.out.println("Denda lebih dari Rp 5000");
-                }
-                else if(mencariMember(idAnggota).mencariBuku(judulBuku, penulisBuku)){
+                } else if (mencariMember(idAnggota).mencariBuku(judulBuku, penulisBuku)) {
                     System.out.println("Buku " + judulBuku + " oleh " + penulisBuku + " sedang dipinjam");
                 }
-                
-                
+
                 else {
                     mencariMember(idAnggota).pinjam(membandingkanBuku(judulBuku, penulisBuku), tanggalPeminjaman);
-                    System.out.println(mencariMember(idAnggota).getName() + " berhasil meminjam Buku " + judulBuku +"!" );
+                    System.out
+                            .println(mencariMember(idAnggota).getName() + " berhasil meminjam Buku " + judulBuku + "!");
                 }
- 
+
             } else if (command == 5) {
                 System.out.println("---------- Pengembalian Buku ----------");
                 System.out.print("ID Anggota: ");
@@ -364,17 +360,14 @@ public class Library {
                 System.out.print("Tanggal Pengembalian: ");
                 String tanggalPengembalian = input.nextLine();
 
-                if(membandingkanId(idAnggota) == false){
+                if (membandingkanId(idAnggota) == false) {
                     System.out.println("Anggota dengan ID " + idAnggota + " tidak ditemukan");
-                }
-                else if(membandingkanBuku(judulBuku, penulisBuku) == null){
+                } else if (membandingkanBuku(judulBuku, penulisBuku) == null) {
                     System.out.println("Buku " + judulBuku + " oleh " + penulisBuku + " tidak ditemukan");
-                }
-                else if(mencariMember(idAnggota).mencariBuku(judulBuku, penulisBuku) == false){
+                } else if (mencariMember(idAnggota).mencariBuku(judulBuku, penulisBuku) == false) {
                     System.out.println("Buku " + judulBuku + " oleh " + penulisBuku + " tidak sedang dipinjam");
 
-                }
-                else{           
+                } else {
                     mencariMember(idAnggota).kembali(membandingkanBuku(judulBuku, penulisBuku), tanggalPengembalian);
                     mencariMember(idAnggota).setFine(membandingkanBuku(judulBuku, penulisBuku));
                     System.out.println(mencariMember(idAnggota).getFine());

@@ -1,22 +1,25 @@
 package assignments.assignment2;
 
-// TODO
 public class Category {
+
+    // Inisialiasasi atribut
     private String name;
     private int point;
 
-    public Category(String name, int point){
+    // Constructor
+    public Category(String name, int point) {
         this.name = name;
         this.point = point;
     }
 
-    public String getName(){
+    // Getter Nama
+    public String getName() {
         return this.name;
     }
 
     @Override
     public String toString() {
         // TODO
-        return "Kategori " + this.name + " dengan " + this.point + " point berhasil ditambahkan" ;
+        return "Kategori " + this.name + " dengan " + this.point + " point berhasil ditambahkan";
     }
 }

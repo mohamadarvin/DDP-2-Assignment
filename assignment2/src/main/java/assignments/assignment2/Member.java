@@ -2,8 +2,9 @@ package assignments.assignment2;
 
 import java.security.PublicKey;
 
-// TODO
 public class Member {
+
+    // Inisialiasasi atribut
     private String id;
     private String name;
     private String dateOfBirth;
@@ -13,6 +14,7 @@ public class Member {
     private int point;
     private BookLoan[] bookLoans;
 
+    // Constructor
     public Member(String id, String name, String dateOfBirth, String studyProgram, String angkatan) {
         this.id = id;
         this.name = name;
@@ -21,29 +23,28 @@ public class Member {
         this.angkatan = angkatan;
     }
 
+    // Setter dan getter tiap method
+
     public String getId() {
         return this.id;
     }
+
     public String getName() {
         return this.name;
     }
 
     public long getFine() {
-        
-    return this.fine;
+
+        return this.fine;
     }
 
-    public long  setFine(Book book){
-        for (int i = 0; i < (bookLoans.length -1); i++) {
-            if(book == bookLoans[i].getBook()){
-                this.fine = bookLoans[i].setfine(bookLoans[i].selisihHari());                
+    public long setFine(Book book) {
+        for (int i = 0; i < (bookLoans.length - 1); i++) {
+            if (book == bookLoans[i].getBook()) {
+                this.fine = bookLoans[i].setfine(bookLoans[i].selisihHari());
             }
-        } 
+        }
     }
-
-  
-
-   
 
     public int getPoint() {
         return this.point;
@@ -87,8 +88,7 @@ public class Member {
             bookLoans = newBookLoans;
         }
 
-        book.setStok(book.getStok()-1);
-
+        book.setStok(book.getStok() - 1);
 
         // TODO: method untuk melakukan peminjaman oleh member
     }
@@ -97,11 +97,8 @@ public class Member {
         BookLoan[] newBookLoans = new BookLoan[bookLoans.length - 1];
         int shifter = 0;
 
-        
-
-      
-        for (int i = 0; i < (bookLoans.length -1); i++) {
-            if(book == bookLoans[i].getBook()){
+        for (int i = 0; i < (bookLoans.length - 1); i++) {
+            if (book == bookLoans[i].getBook()) {
                 continue;
             }
             newBookLoans[shifter] = bookLoans[i];
@@ -109,7 +106,7 @@ public class Member {
 
         }
         bookLoans = newBookLoans;
-        book.setStok(book.getStok()+1);
+        book.setStok(book.getStok() + 1);
         // TODO: method untuk melakukan pengembalian oleh member
     }
 
