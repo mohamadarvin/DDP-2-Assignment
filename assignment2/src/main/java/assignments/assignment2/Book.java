@@ -6,11 +6,45 @@ public class Book {
     private String author;
     private String publisher;
     private int stok;
-    private Category category;
+    private String category;
+
+    public Book(String title, String author, String publisher, int stok, String category) {
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.stok = stok;
+        this.category = category;
+    }
+
+    public String gettitle() {
+        return this.title;
+    }
+
+    public String getauthor() {
+        return this.author;
+    }
+
+    public int getStok() {
+        return this.stok;
+    }
+
+    public void setStok(int stok){
+        this.stok = stok;
+    }
+
+    public String getcategory() {
+        return this.category;
+    }
+
+    public boolean cekStok(int stok) {
+        return stok > 0;
+    }
 
     @Override
     public String toString() {
         // TODO
-        return "";
+        return  "Buku "+ this.title + " oleh " + this.author + " berhasil ditambahkan" ;
+        
     }
+
 }

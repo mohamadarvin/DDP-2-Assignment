@@ -30,6 +30,7 @@ public class IdGenerator {
             input.nextLine();
 
             if (menu == 1) {
+                
                 System.out.print("Program Studi: ");
                 String programStudi = input.nextLine();
                 System.out.print("Angkatan: ");
