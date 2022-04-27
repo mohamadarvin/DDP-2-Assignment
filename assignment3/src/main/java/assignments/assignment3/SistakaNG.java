@@ -171,7 +171,7 @@ public class SistakaNG {
                     daftarAnggota.add(dosen);
                     System.out.println(String.format("Berhasil menambahkan dosen dengan data: %n%s", dosen.toString()));
                 } else {
-                    System.out.println("Tipe Anggota tidak valid!");
+                    System.out.println(String.format("Tipe Anggota %s tidak valid!", tipeAnggota));
                 }
 
                 // TODO: Implementasikan menu-nya
