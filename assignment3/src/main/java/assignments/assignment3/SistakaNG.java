@@ -259,6 +259,7 @@ public class SistakaNG {
                 }
 
             } else if (command == 4) {
+                System.out.println("---------- Hapus Buku ----------");
                 System.out.print("JuduL: ");
                 String namaBuku = input.nextLine();
                 System.out.print("Penulis: ");
@@ -342,8 +343,8 @@ public class SistakaNG {
                                     "%s%n---------- Daftar Peminjam ----------%nBelum ada anggota yang meminjam buku %s",
                                     daftarBuku.get(i).toString(), daftarBuku.get(i).getJudul()));
                         } else {
-                            System.out.println("---------- Daftar Peminjam ----------");
                             System.out.println(daftarBuku.get(i).toString());
+                            System.out.println("---------- Daftar Peminjam ----------");
                             for (int j = 0; j < daftarBuku.get(i).getDaftarPeminjam().size(); j++) {
 
                                 System.out.println(String.format("----------------- %d -----------------%n%s", j + 1,
@@ -383,9 +384,9 @@ public class SistakaNG {
             if (command == 1) {
                 // TODO: Implementasikan menu-nya
                 System.out.println("---------- Peminjaman Buku ----------");
-                System.out.print("Judul: ");
+                System.out.print("Judul Buku: ");
                 String namaBuku = input.nextLine();
-                System.out.print("Penulis: ");
+                System.out.print("Penulis Buku: ");
                 String penulis = input.nextLine();
                 System.out.print("Tanggal Peminjaman: ");
                 String tanggalPeminjaman = input.nextLine();
@@ -413,7 +414,7 @@ public class SistakaNG {
             } else if (command == 2) {
                 // TODO: Implementasikan menu-nya
                 System.out.println("---------- Pengembalian Buku ----------");
-                System.out.print("Judul: ");
+                System.out.print("Judul Buku: ");
                 String namaBuku = input.nextLine();
                 System.out.print("Penulis Buku: ");
                 String penulis = input.nextLine();
@@ -440,7 +441,7 @@ public class SistakaNG {
                 // TODO: Implementasikan menu-nya
                 System.out.println("---------- Pembayaran Denda ----------");
                 System.out.print("Jumlah: ");
-                long jumlah = input.nextLong();
+                long jumlah = Integer.parseInt(input.nextLine());
 
                 Anggota anggota = (Anggota) penggunaLoggedIn;
                 System.out.println(anggota.bayarDenda(jumlah));

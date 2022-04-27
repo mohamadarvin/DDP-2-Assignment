@@ -535,7 +535,7 @@ Sisa denda saat ini: Rp5000
 
 1. Peminjaman
 2. Pengembalian
-3. Pembayaran Denda
+3. Pembayaran 
 4. Detail Anggota
 99. Logout
 Masukkan pilihan menu: 
