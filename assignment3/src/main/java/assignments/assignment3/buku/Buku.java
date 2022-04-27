@@ -1,7 +1,5 @@
 package assignments.assignment3.buku;
 
-import java.util.Locale.Category;
-
 import assignments.assignment3.pengguna.CanBorrow;
 
 import java.util.ArrayList;
