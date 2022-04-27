@@ -1,16 +1,27 @@
 package assignments.assignment3;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import assignments.assignment3.pengguna.Pengguna;
 import assignments.assignment3.pengguna.Staf;
+import assignments.assignment3.pengguna.Anggota;
+import assignments.assignment3.pengguna.Dosen;
+import assignments.assignment3.pengguna.Mahasiswa;
+import assignments.assignment3.buku.Buku;
+import assignments.assignment3.buku.Kategori;
 
 import java.util.Scanner;
 
 public class SistakaNG {
     private static Scanner input = new Scanner(System.in);
+    public static ArrayList<Staf> daftarStaf = new ArrayList<Staf>();
+    public static ArrayList<Anggota> daftarAnggota = new ArrayList<Anggota>();
+    public static ArrayList<Buku> daftarBuku = new ArrayList<Buku>();
+    public static ArrayList<Kategori> daftarKategori = new ArrayList<Kategori>();
+    public static Pengguna penggunaLoggedIn;
 
-    private static Pengguna penggunaLoggedIn;
-
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         System.out.println("Start - Register Staf...");
         registerStaf();
         System.out.println("Done - Register Staf...\n");
@@ -20,14 +31,17 @@ public class SistakaNG {
 
     // Method ini digunakan untuk mendaftarkan staf-staf ketika program dijalankan
     private static void registerStaf() {
-        String[] listNama = new String[]{"Dek Depe", "Dek DePram", "Dek Sofita", "Winter", "Boo"};
+        String[] listNama = new String[] { "Dek Depe", "Dek DePram", "Dek Sofita", "Winter", "Boo" };
 
         for (int i = 0; i < listNama.length; i++) {
+
             // TODO: Buat objek Staf menggunakan listNama[i]
 
+            Staf staf = new Staf(listNama[i]);
             // TODO: Setelah objek Staf behasil dibuat, uncomment 2 baris kode di bawah ini
-            // System.out.println("Berhasil menambahkan staf dengan data:");
-            // System.out.println(staf);
+            System.out.println("Berhasil menambahkan staf dengan data:");
+            System.out.println(staf);
+            daftarStaf.add(staf);
         }
     }
 
@@ -63,13 +77,40 @@ public class SistakaNG {
             System.out.print("ID: ");
             String id = input.nextLine();
 
-            // TODO: Implementasi login -> jika login berhasil, ubah nilai isLoginSuccess menjadi true
+            // try {
+            if (id.startsWith("STAF")) {
+                for (int i = 0; i < daftarStaf.size(); i++) {
+                    if (id.equals(daftarStaf.get(i).getId())) {
+                        System.out.println(String.format("Halo, %s! Selamat datang di SistakaNG",
+                                daftarStaf.get(i).getNama()));
+                        isLoginSuccess = true;
+                        penggunaLoggedIn = daftarStaf.get(i);
+                    }
+
+                }
+            } else {
+                for (int i = 0; i < daftarAnggota.size(); i++) {
+                    if (id.equals(daftarAnggota.get(i).getId())) {
+                        System.out.println(String.format("Halo, %s! Selamat datang di SistakaNG",
+                                daftarAnggota.get(i).getNama()));
+                        isLoginSuccess = true;
+                        penggunaLoggedIn = daftarAnggota.get(i);
+                    }
+                }
+            }
+            if (isLoginSuccess == false) {
+                System.out.println(String.format("Pengguna dengan ID %s tidak ditemukan", id));
+            }
+
+            // TODO: Implementasi login -> jika login berhasil, ubah nilai isLoginSuccess
+            // menjadi true
         }
 
         showMenu();
     }
 
-    // Method ini digunakan untuk mencetak menu yang dapat diakses berdasarkan jenis penggunaLoggedIn
+    // Method ini digunakan untuk mencetak menu yang dapat diakses berdasarkan jenis
+    // penggunaLoggedIn
     private static void showMenu() {
         if (penggunaLoggedIn instanceof Staf) {
             showMenuStaf();
@@ -96,19 +137,225 @@ public class SistakaNG {
             command = Integer.parseInt(input.nextLine());
             System.out.println();
             if (command == 1) {
+                System.out.println("---------- Tambah Anggota ----------");
+                System.out.print("Tipe Anggota: ");
+                String tipeAnggota = input.nextLine();
+
+                if (tipeAnggota.equals("Mahasiswa")) {
+                    System.out.print("Nama: ");
+                    String nama = input.nextLine();
+
+                    System.out.print("Program Studi (SIK/SSI/MIK/MTI/DIK): ");
+                    String programStudi = input.nextLine();
+
+                    System.out.print("Angkatan: ");
+                    String angkatan = input.nextLine();
+
+                    System.out.print("Tanggal Lahir (dd/mm/yyyy): ");
+                    String tanggalLahir = input.nextLine();
+
+                    Mahasiswa mahasiswa = new Mahasiswa(nama, tanggalLahir, programStudi, angkatan);
+
+                    if (mahasiswa.getId().equals("Input tidak valid!")) {
+                        System.out.println("Tidak dapat menambahkan anggota. Silahkan periksa kembali input anda!");
+                    } else {
+                        daftarAnggota.add(mahasiswa);
+                        System.out.println(String.format("Berhasil menambahkan mahasiswa dengan data:%n%s",
+                                daftarAnggota.get(daftarAnggota.size() - 1).toString()));
+                    }
+
+                } else if (tipeAnggota.equals("Dosen")) {
+                    System.out.print("Nama: ");
+                    String nama = input.nextLine();
+                    Dosen dosen = new Dosen(nama);
+                    daftarAnggota.add(dosen);
+                    System.out.println(String.format("Berhasil menambahkan dosen dengan data: %n%s", dosen.toString()));
+                } else {
+                    System.out.println("Tipe Anggota tidak valid!");
+                }
+
                 // TODO: Implementasikan menu-nya
             } else if (command == 2) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Tambah Kategori ----------");
+                System.out.print("Nama Kategori: ");
+                String namaKategori = input.nextLine();
+                System.out.print("Poin: ");
+                int poin = Integer.parseInt(input.nextLine());
+                boolean lanjut = true;
+                for (int i = 0; i < daftarKategori.size(); i++) {
+                    if (daftarKategori.get(i).getNama().equalsIgnoreCase(namaKategori)) {
+                        System.out.println(
+                                String.format("Kategori %s sudah pernah ditambahkan", daftarKategori.get(i).getNama()));
+                        lanjut = false;
+                        break;
+                    }
+                }
+                if (lanjut == true) {
+                    Kategori kategori = new Kategori(namaKategori, poin);
+                    daftarKategori.add(kategori);
+                    System.out.println(
+                            String.format("Kategori %s dengan poin %d berhasil ditambahkan", namaKategori, poin));
+                }
+
             } else if (command == 3) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Tambah Buku ----------");
+                System.out.print("Judul: ");
+                String namaBuku = input.nextLine();
+                System.out.print("Penulis: ");
+                String penulis = input.nextLine();
+                System.out.print("Penerbit: ");
+                String penerbit = input.nextLine();
+                System.out.print("Kategori: ");
+                String namaKategori = input.nextLine();
+                System.out.print("stok: ");
+                int stok = Integer.parseInt(input.nextLine());
+
+                boolean lanjut = true;
+                boolean lanjut1 = true;
+                Kategori kategori = new Kategori(null, 0);
+                while (lanjut1 == true) {
+                    for (int i = 0; i < daftarKategori.size(); i++) {
+                        if (daftarKategori.get(i).getNama().equalsIgnoreCase(namaKategori)) {
+                            kategori = new Kategori(daftarKategori.get(i).getNama(), daftarKategori.get(i).getpoin());
+                            lanjut1 = false;
+                            break;
+                        }
+                    }
+                    if (lanjut1 == true) {
+                        System.out.println(String.format("Kategori %s tidak ditemukan", namaKategori));
+                        lanjut1 = false;
+                        lanjut = false;
+                    }
+                }
+
+                if (lanjut == true) {
+                    if (stok <= 0) {
+                        System.out.println("Stok harus lebih dari 0");
+                        lanjut = false;
+                    }
+                }
+
+                if (lanjut == true) {
+                    for (int i = 0; i < daftarBuku.size(); i++) {
+                        if (daftarBuku.get(i).getJudul().equalsIgnoreCase(namaBuku)
+                                && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+                            System.out.println(String.format("Buku %s oleh %s sudah pernah ditambahkan",
+                                    daftarBuku.get(i).getJudul(), daftarBuku.get(i).getPenulis()));
+                            lanjut = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (lanjut == true) {
+                    Buku buku = new Buku(namaBuku, penulis, penerbit, kategori, stok);
+
+                    daftarBuku.add(buku);
+                    System.out.println(String.format("Buku %s oleh %s berhasil ditambahkan",
+                            daftarBuku.get(daftarBuku.size() - 1).getJudul(),
+                            daftarBuku.get(daftarBuku.size() - 1).getPenulis()));
+                }
+
             } else if (command == 4) {
+                System.out.print("JuduL: ");
+                String namaBuku = input.nextLine();
+                System.out.print("Penulis: ");
+                String penulis = input.nextLine();
+                boolean lanjut = true;
+
+                for (int i = 0; i < daftarBuku.size(); i++) {
+                    if (daftarBuku.get(i).getJudul().equalsIgnoreCase(namaBuku)
+                            && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+                        if (daftarBuku.get(i).getStok() == daftarBuku.get(i).getStokAwal()) {
+                            System.out.println(String.format("Buku %s oleh %s berhasil dihapus",
+                                    daftarBuku.get(i).getJudul(), daftarBuku.get(i).getPenulis()));
+                            daftarBuku.remove(i);
+                            lanjut = false;
+
+                            break;
+                        } else {
+                            System.out.println(String.format(
+                                    "Buku %s oleh %s tidak dapat dihapus karena sedang dipinjam", namaBuku, penulis));
+                            lanjut = false;
+                        }
+                    }
+
+                }
+                if (lanjut == true) {
+                    System.out.println(String.format("Buku %s oleh %s tidak ditemukan", namaBuku, penulis));
+
+                }
+
                 // TODO: Implementasikan menu-nya
             } else if (command == 5) {
+                System.out.println("---------- Peringkat Anggota ----------");
+                ;
+                if (daftarAnggota.size() == 0) {
+                    System.out.println("Belum ada anggota yang terdaftar pada sistem");
+
+                } else {
+                    Collections.sort(daftarAnggota);
+                    int count = 0;
+                    for (int i = 0; i < daftarAnggota.size(); i++) {
+                        if (count == 3) {
+                            break;
+                        }
+                        System.out.println(String.format("----------------- %d -----------------%n%s", i + 1,
+                                daftarAnggota.get(i).toString()));
+                        count++;
+                    }
+                }
                 // TODO: Implementasikan menu-nya
             } else if (command == 6) {
+                System.out.println("---------- Detail Anggota ----------");
+                System.out.print("ID Anggota: ");
+                String idAnggota = input.nextLine();
+                Boolean inputvalid = false;
+                for (int i = 0; i < daftarAnggota.size(); i++) {
+                    if (daftarAnggota.get(i).getId().equals(idAnggota)) {
+                        inputvalid = true;
+                        daftarAnggota.get(i).detail();
+
+                    }
+                }
+                if (inputvalid == false) {
+                    System.out.println(String.format("Anggota dengan ID %s tidak ditemukan", idAnggota));
+                }
                 // TODO: Implementasikan menu-nya
+
             } else if (command == 7) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Daftar Peminjam Buku ----------");
+                System.out.print("Judul: ");
+                String judul = input.nextLine();
+                System.out.print("Penulis: ");
+                String penulis = input.nextLine();
+                boolean bukuAda = false;
+                for (int i = 0; i < daftarBuku.size(); i++) {
+                    if (daftarBuku.get(i).getJudul().equalsIgnoreCase(judul)
+                            && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+                        bukuAda = true;
+                        if (daftarBuku.get(i).getDaftarPeminjam().size() == 0) {
+                            System.out.println(String.format(
+                                    "%s%n---------- Daftar Peminjam ----------%nBelum ada anggota yang meminjam buku %s",
+                                    daftarBuku.get(i).toString(), daftarBuku.get(i).getJudul()));
+                        } else {
+                            System.out.println("---------- Daftar Peminjam ----------");
+                            System.out.println(daftarBuku.get(i).toString());
+                            for (int j = 0; j < daftarBuku.get(i).getDaftarPeminjam().size(); j++) {
+
+                                System.out.println(String.format("----------------- %d -----------------%n%s", j + 1,
+                                        daftarBuku.get(i).getDaftarPeminjam().get(j).toString()));
+                            }
+                        }
+                    }
+                }
+                if (bukuAda == false) {
+                    System.out.println(String.format("Buku %s oleh %s tidak ditemukan", judul, penulis));
+                }
+
             } else if (command == 99) {
                 System.out.println("Terima kasih telah menggunakan SistakaNG!");
                 hasChosenExit = true;
@@ -135,11 +382,72 @@ public class SistakaNG {
             System.out.println();
             if (command == 1) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Peminjaman Buku ----------");
+                System.out.print("Judul: ");
+                String namaBuku = input.nextLine();
+                System.out.print("Penulis: ");
+                String penulis = input.nextLine();
+                System.out.print("Tanggal Peminjaman: ");
+                String tanggalPeminjaman = input.nextLine();
+                boolean adaBuku = false;
+
+                for (int i = 0; i < daftarBuku.size(); i++) {
+                    if (daftarBuku.get(i).getJudul().equalsIgnoreCase(namaBuku)
+                            && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+                        adaBuku = true;
+                        if (penggunaLoggedIn instanceof Mahasiswa) {
+                            Mahasiswa mahasiswa = (Mahasiswa) penggunaLoggedIn;
+                            System.out.println(
+                                    String.format("%s", mahasiswa.pinjam(daftarBuku.get(i), tanggalPeminjaman)));
+                            break;
+                        } else {
+                            Dosen dosen = (Dosen) penggunaLoggedIn;
+                            System.out.println(String.format("%s", dosen.pinjam(daftarBuku.get(i), tanggalPeminjaman)));
+                            break;
+                        }
+                    }
+                }
+                if (adaBuku == false) {
+                    System.out.println(String.format("Buku %s oleh %s tidak tersedia", namaBuku, penulis));
+                }
             } else if (command == 2) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Pengembalian Buku ----------");
+                System.out.print("Judul: ");
+                String namaBuku = input.nextLine();
+                System.out.print("Penulis Buku: ");
+                String penulis = input.nextLine();
+                System.out.print("Tanggal Pengembalian: ");
+                String tanggalPengembalian = input.nextLine();
+                boolean adaBuku = false;
+
+                for (int i = 0; i < daftarBuku.size(); i++) {
+                    if (daftarBuku.get(i).getJudul().equalsIgnoreCase(namaBuku)
+                            && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+                        adaBuku = true;
+
+                        Anggota anggota = (Anggota) penggunaLoggedIn;
+                        System.out.println(anggota.kembali(daftarBuku.get(i), tanggalPengembalian));
+
+                    }
+                }
+
+                if (adaBuku == false) {
+                    System.out.println(String.format("Buku %s Lanjut oleh %s tidak ditemukan", namaBuku, penulis));
+                }
+
             } else if (command == 3) {
                 // TODO: Implementasikan menu-nya
+                System.out.println("---------- Pembayaran Denda ----------");
+                System.out.print("Jumlah: ");
+                long jumlah = input.nextLong();
+
+                Anggota anggota = (Anggota) penggunaLoggedIn;
+                System.out.println(anggota.bayarDenda(jumlah));
+
             } else if (command == 4) {
+                Anggota anggota = (Anggota) penggunaLoggedIn;
+                anggota.detail();
                 // TODO: Implementasikan menu-nya
             } else if (command == 99) {
                 System.out.println("Terima kasih telah menggunakan SistakaNG!");
