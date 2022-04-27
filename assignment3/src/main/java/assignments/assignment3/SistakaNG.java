@@ -157,7 +157,7 @@ public class SistakaNG {
                     Mahasiswa mahasiswa = new Mahasiswa(nama, tanggalLahir, programStudi, angkatan);
 
                     if (mahasiswa.getId().equals("Input tidak valid!")) {
-                        System.out.println("Tidak dapat menambahkan anggota. Silahkan periksa kembali input anda!");
+                        System.out.println("Tidak dapat menambahkan anggota silahkan periksa kembali input anda!");
                     } else {
                         daftarAnggota.add(mahasiswa);
                         System.out.println(String.format("Berhasil menambahkan mahasiswa dengan data:%n%s",
@@ -169,7 +169,7 @@ public class SistakaNG {
                     String nama = input.nextLine();
                     Dosen dosen = new Dosen(nama);
                     daftarAnggota.add(dosen);
-                    System.out.println(String.format("Berhasil menambahkan dosen dengan data: %n%s", dosen.toString()));
+                    System.out.println(String.format("Berhasil menambahkan dosen dengan data:%n%s", dosen.toString()));
                 } else {
                     System.out.println(String.format("Tipe Anggota %s tidak valid!", tipeAnggota));
                 }
@@ -209,7 +209,7 @@ public class SistakaNG {
                 String penerbit = input.nextLine();
                 System.out.print("Kategori: ");
                 String namaKategori = input.nextLine();
-                System.out.print("stok: ");
+                System.out.print("Stok: ");
                 int stok = Integer.parseInt(input.nextLine());
 
                 boolean lanjut = true;
@@ -260,7 +260,7 @@ public class SistakaNG {
 
             } else if (command == 4) {
                 System.out.println("---------- Hapus Buku ----------");
-                System.out.print("JuduL: ");
+                System.out.print("Judul: ");
                 String namaBuku = input.nextLine();
                 System.out.print("Penulis: ");
                 String penulis = input.nextLine();
@@ -269,6 +269,7 @@ public class SistakaNG {
                 for (int i = 0; i < daftarBuku.size(); i++) {
                     if (daftarBuku.get(i).getJudul().equalsIgnoreCase(namaBuku)
                             && daftarBuku.get(i).getPenulis().equalsIgnoreCase(penulis)) {
+
                         if (daftarBuku.get(i).getStok() == daftarBuku.get(i).getStokAwal()) {
                             System.out.println(String.format("Buku %s oleh %s berhasil dihapus",
                                     daftarBuku.get(i).getJudul(), daftarBuku.get(i).getPenulis()));
@@ -409,7 +410,7 @@ public class SistakaNG {
                     }
                 }
                 if (adaBuku == false) {
-                    System.out.println(String.format("Buku %s oleh %s tidak tersedia", namaBuku, penulis));
+                    System.out.println(String.format("Buku %s oleh %s tidak ditemukan", namaBuku, penulis));
                 }
             } else if (command == 2) {
                 // TODO: Implementasikan menu-nya
@@ -428,13 +429,14 @@ public class SistakaNG {
                         adaBuku = true;
 
                         Anggota anggota = (Anggota) penggunaLoggedIn;
+
                         System.out.println(anggota.kembali(daftarBuku.get(i), tanggalPengembalian));
 
                     }
                 }
 
                 if (adaBuku == false) {
-                    System.out.println(String.format("Buku %s Lanjut oleh %s tidak ditemukan", namaBuku, penulis));
+                    System.out.println(String.format("Buku %s oleh %s tidak ditemukan", namaBuku, penulis));
                 }
 
             } else if (command == 3) {

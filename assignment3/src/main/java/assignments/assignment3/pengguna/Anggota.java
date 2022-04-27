@@ -55,6 +55,7 @@ public abstract class Anggota extends Pengguna implements CanBorrow, Comparable<
         boolean dikembalikan = false;
         for (int i = 0; i < daftarPeminjaman.size(); i++) {
             if (buku == this.getDaftarPeminjaman().get(i).getBuku()) {
+                buku.setStok(buku.getStok() + 1);
                 this.getDaftarPeminjaman().get(i).kembalikanBuku(tanggalPengembalian);
                 this.getRiwayatPeminjaman().get(i).kembalikanBuku(tanggalPengembalian);
 
@@ -79,7 +80,7 @@ public abstract class Anggota extends Pengguna implements CanBorrow, Comparable<
 
     public void detail() {
         System.out.println(this.toString());
-        System.out.println("Riwayat Peminjaman Buku: ");
+        System.out.println("Riwayat Peminjaman Buku:");
         if (riwayatPeminjaman.size() == 0) {
             System.out.println("Belum pernah meminjam buku");
         } else {
@@ -93,15 +94,15 @@ public abstract class Anggota extends Pengguna implements CanBorrow, Comparable<
 
     public String bayarDenda(long jumlahBayar) {
         if (this.getDenda() == 0) {
-            return String.format(" %s tidak memiliki denda", this.getNama());
+            return String.format("%s tidak memiliki denda", this.getNama());
         } else if (jumlahBayar < this.getDenda()) {
             this.setDenda(this.getDenda() - jumlahBayar);
-            return String.format("%s berhasil membayar denda sebesar Rp %d%nSisa denda saat ini: Rp%d", this.getNama(),
+            return String.format("%s berhasil membayar denda sebesar Rp%d%nSisa denda saat ini: Rp%d", this.getNama(),
                     jumlahBayar, this.getDenda());
         }
         long jumlahKembalian = jumlahBayar - this.getDenda();
         this.setDenda(0);
-        return String.format("%s berhasil membayar lunas denda %nJumlah kembalian: Rp%d", this.getNama(),
+        return String.format("%s berhasil membayar lunas denda%nJumlah kembalian: Rp%d", this.getNama(),
                 jumlahKembalian);
     }
 

@@ -27,13 +27,13 @@ public class Peminjaman {
 
     public void kembalikanBuku(String tanggalPengembalian) {
         this.setTanggalPengembalian(tanggalPengembalian);
-        buku.setStok(buku.getStok() + 1);
 
     }
 
     public Anggota getAnggota() {
         return anggota;
     }
+
     public void setAnggota(Anggota anggota) {
         this.anggota = anggota;
     }
@@ -62,7 +62,7 @@ public class Peminjaman {
         this.tanggalPengembalian = tanggalPengembalian;
     }
 
-    public long hitungDenda() {        // Custom date format
+    public long hitungDenda() { // Custom date format
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         Date d1 = null;
@@ -78,7 +78,7 @@ public class Peminjaman {
         long diff = d2.getTime() - d1.getTime();
         long diffInDays = diff / (60 * 60 * 1000 * 24);
 
-        if (diffInDays > 7){
+        if (diffInDays > 7) {
             return (diffInDays - 7) * DENDA_PER_HARI;
         }
 

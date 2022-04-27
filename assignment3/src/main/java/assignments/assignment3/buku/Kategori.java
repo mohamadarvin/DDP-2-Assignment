@@ -1,11 +1,12 @@
 package assignments.assignment3.buku;
 
 public class Kategori {
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method, inheritance, dll)
+    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method,
+    // inheritance, dll)
     private String nama;
     private int poin;
 
-    public Kategori(String nama, int poin){
+    public Kategori(String nama, int poin) {
         this.nama = nama;
         this.poin = poin;
     }
@@ -18,9 +19,8 @@ public class Kategori {
         return poin;
     }
 
-    
     @Override
-    public String toString(){
-        return String.format("Kategori: %s%nPoin: %d", this.getNama(),this.getpoin());
+    public String toString() {
+        return String.format("Kategori: %s%nPoin: %d", this.getNama(), this.getpoin());
     }
 }
