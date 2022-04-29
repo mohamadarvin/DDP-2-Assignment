@@ -1,11 +1,11 @@
 package assignments.assignment3.pengguna;
 
 public abstract class Pengguna {
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method, inheritance, dll)
+
     private String id;
     private String nama;
 
-    public Pengguna(String id, String nama){
+    public Pengguna(String id, String nama) {
         this.id = id;
         this.nama = nama;
 
@@ -23,8 +23,9 @@ public abstract class Pengguna {
         return nama;
     }
 
+    // Method untuk membentuk ID
     protected abstract String generateId();
-    
-    
+
+    // Output dipakai di subclass
     public abstract String toString();
 }

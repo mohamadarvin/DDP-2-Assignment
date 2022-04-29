@@ -1,11 +1,10 @@
 package assignments.assignment3.pengguna;
-
 public class Staf extends Pengguna {
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method, inheritance, dll)
+
     private static int jumlahStaf;
 
-    public Staf(String nama){
-        super(null,nama);
+    public Staf(String nama) {
+        super(null, nama);
         this.setId(this.generateId());
     }
 
@@ -17,14 +16,16 @@ public class Staf extends Pengguna {
         Staf.jumlahStaf = jumlahStaf;
     }
 
+    // Pembentukan ID
     @Override
-    protected String generateId(){
-        setJumlahStaf(getJumlahStaf()+1);
+    protected String generateId() {
+        setJumlahStaf(getJumlahStaf() + 1);
         return String.format("STAF-%d", getJumlahStaf());
     }
 
+    // Output kelas staf
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("ID Staf: %s%nNama Staf: %s", this.getId(), this.getNama());
     }
 }

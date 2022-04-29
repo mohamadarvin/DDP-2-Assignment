@@ -14,8 +14,6 @@ public class Mahasiswa extends Anggota {
     static HashMap<Character, Integer> charToValue = new HashMap<>(36);
     static char[] valueToChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method,
-    // inheritance, dll)
     public Mahasiswa(String nama, String tanggalLahir, String programStudi, String angkatan) {
         super(null, nama, 0, 0);
         this.tanggalLahir = tanggalLahir;
@@ -38,6 +36,7 @@ public class Mahasiswa extends Anggota {
         return tanggalLahir;
     }
 
+    // membuat ID Mahasiswa
     @Override
     protected String generateId() {
         // TODO Auto-generated method stub
@@ -59,19 +58,29 @@ public class Mahasiswa extends Anggota {
         return nomorKeanggotaanStr;
     }
 
+    // Pinjam Buku
     @Override
     public String pinjam(Buku buku, String tanggalPeminjaman) {
-        // TODO Auto-generated method stub
+
+        // Jika stok kosong
         if (buku.getStok() == 0) {
             return String.format("Buku %s oleh %s tidak tersedia", buku.getJudul(), buku.getPenulis());
         }
+
+        // Jika peminjaman sudah mencapai batas maksimal buku
         if (this.getDaftarPeminjaman().size() == BATAS_JUMLAH_PEMINJAMAN_BUKU) {
             return "Jumlah buku yang sedang dipinjam sudah mencapai batas maksimal";
 
-        } else if (this.getDenda() >= BATAS_MAKSIMAL_DENDA) {
+        }
+
+        // Jika denda mencapai batas maksimal
+        else if (this.getDenda() >= BATAS_MAKSIMAL_DENDA) {
             return "Denda lebih dari Rp5000";
 
-        } else {
+        }
+
+        // Jika Buku sedang dipinjam
+        else {
             for (int i = 0; i < this.getDaftarPeminjaman().size(); i++) {
                 if (this.getDaftarPeminjaman().get(i).getBuku().getJudul().equalsIgnoreCase(buku.getJudul()) &&
                         this.getDaftarPeminjaman().get(i).getBuku().getPenulis().equalsIgnoreCase(buku.getPenulis())) {
@@ -83,6 +92,7 @@ public class Mahasiswa extends Anggota {
             }
         }
 
+        // Jika syarat terpenuhi
         Peminjaman peminjaman = new Peminjaman(buku, tanggalPeminjaman, this);
         this.getDaftarPeminjaman().add(peminjaman);
         super.getRiwayatPeminjaman().add(peminjaman);
@@ -91,6 +101,7 @@ public class Mahasiswa extends Anggota {
                 this.getDaftarPeminjaman().get(this.getDaftarPeminjaman().size() - 1).getBuku().getJudul());
     }
 
+    // Output kelas Mahasiswa
     @Override
     public String toString() {
         // TODO Auto-generated method stub

@@ -7,21 +7,22 @@ import java.text.ParseException;
 import assignments.assignment3.pengguna.Anggota;
 
 public class Peminjaman {
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method,
-    // inheritance, dll)
     private static final long DENDA_PER_HARI = 3000;
     private Anggota anggota;
     private Buku buku;
     private String tanggalPeminjaman;
-    private String tanggalPengembalian;
-    private long denda;
+    private String tanggalPengembalian = "-";
+    private long denda = 0;
 
     public Peminjaman(Buku buku, String tanggalPeminjaman, Anggota anggota) {
         this.buku = buku;
         this.anggota = anggota;
         this.tanggalPeminjaman = tanggalPeminjaman;
-        this.tanggalPengembalian = "-";
+
+        // Jika dipinjam buku berkurang satu
         buku.setStok(buku.getStok() - 1);
+
+        // Peminjam Buku
         buku.getDaftarPeminjam().add(this.getAnggota());
     }
 
@@ -62,7 +63,10 @@ public class Peminjaman {
         this.tanggalPengembalian = tanggalPengembalian;
     }
 
-    public long hitungDenda() { // Custom date format
+    // Perhitungan denda
+    public long hitungDenda() {
+
+        // Custom date format
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         Date d1 = null;
@@ -74,10 +78,11 @@ public class Peminjaman {
             e.printStackTrace();
         }
 
-        // Get msec from each, and subtract.
+        // Selisih waktu
         long diff = d2.getTime() - d1.getTime();
         long diffInDays = diff / (60 * 60 * 1000 * 24);
 
+        // Jika meminjam lebih dari 7 hari
         if (diffInDays > 7) {
             return (diffInDays - 7) * DENDA_PER_HARI;
         }
@@ -85,6 +90,7 @@ public class Peminjaman {
         return 0;
     }
 
+    // output kelas peminjaman
     @Override
     public String toString() {
         return String.format("%s%nTanggal Peminjaman: %s%nTanggal Pengembalian: %s%nDenda: Rp%d",

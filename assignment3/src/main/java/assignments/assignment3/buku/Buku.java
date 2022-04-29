@@ -5,14 +5,14 @@ import assignments.assignment3.pengguna.CanBorrow;
 import java.util.ArrayList;
 
 public class Buku {
-    // TODO: Implementasi kelas ini sesuai dengan UML Diagram (attribute, method,
-    // inheritance, dll)
     private String judul;
     private String penulis;
     private String penerbit;
     private int stokAwal;
     private int stok;
     private Kategori kategori;
+
+    // daftar orang yang pernah meminjam buku
     private ArrayList<CanBorrow> daftarPeminjam = new ArrayList<CanBorrow>();
 
     public Buku(String judul, String penulis, String penerbit, Kategori kategori, int stokAwal) {
@@ -56,6 +56,7 @@ public class Buku {
         return daftarPeminjam;
     }
 
+    // output kelas buku
     @Override
     public String toString() {
         return String.format("Judul Buku: %s%nPenulis Buku: %s%nPenerbit Buku: %s%nKategori: %s%nPoin: %d",
