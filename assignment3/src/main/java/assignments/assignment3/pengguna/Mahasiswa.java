@@ -19,7 +19,7 @@ public class Mahasiswa extends Anggota {
         this.tanggalLahir = tanggalLahir;
         this.programStudi = programStudi;
         this.angkatan = angkatan;
-        this.setId(this.generateId()); //
+        this.setId(this.generateId());
         this.setDaftarPeminjaman(this.getDaftarPeminjaman());
 
     }

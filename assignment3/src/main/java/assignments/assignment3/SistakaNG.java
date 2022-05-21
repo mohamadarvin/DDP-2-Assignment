@@ -251,7 +251,7 @@ public class SistakaNG {
 
                         // Kategori ada
                         if (daftarKategori.get(i).getNama().equalsIgnoreCase(namaKategori)) {
-                            kategori = new Kategori(daftarKategori.get(i).getNama(), daftarKategori.get(i).getpoin());
+                            kategori = daftarKategori.get(i);
                             lanjut1 = false;
                             break;
                         }

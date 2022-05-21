@@ -70,8 +70,11 @@ public abstract class Anggota extends Pengguna implements CanBorrow, Comparable<
                 this.getDaftarPeminjaman().get(i).kembalikanBuku(tanggalPengembalian);
 
                 long dendaBuku = this.getDaftarPeminjaman().get(i).hitungDenda();
-
-                this.getRiwayatPeminjaman().get(i).setDenda(dendaBuku);
+                for (int j = 0; j < riwayatPeminjaman.size(); j++) {
+                    if (buku == this.getRiwayatPeminjaman().get(j).getBuku()) {
+                        this.getRiwayatPeminjaman().get(j).setDenda(dendaBuku);
+                    }
+                }
                 this.setDenda(this.getDenda() + dendaBuku);
                 this.getDaftarPeminjaman().remove(i);
                 dikembalikan = true;
