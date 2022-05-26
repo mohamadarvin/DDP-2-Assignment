@@ -17,10 +17,14 @@ public class HomeGUI {
     private final Map<String, SistakaPanel> panelMap = new HashMap<>();
     private Pengguna user;
 
+    public static final Font fontGeneral = new Font("Century Gothic", Font.BOLD, 14);
+    public static final Font fontTitle = new Font("Century Gothic", Font.PLAIN, 30);
+
     // Silahkan mengganti settingnya sesuai dengan keinginan Anda
     public HomeGUI(JFrame frame) {
         this.frame = frame;
         mainPanel.setLayout(layout);
+        SistakaNG.registerStaf();
         initGUI();
         frame.setContentPane(mainPanel);
     }
@@ -72,7 +76,7 @@ public class HomeGUI {
         SistakaPanel pembayaran = new PembayaranPanel(this);
         panelMap.put("pembayaran", pembayaran);
         mainPanel.add(pembayaran, "pembayaran");
-        SistakaPanel detailUser= new DetailUserPanel(this);
+        SistakaPanel detailUser = new DetailUserPanel(this);
         panelMap.put("detailUser", detailUser);
         mainPanel.add(detailUser, "detailUser");
     }
@@ -90,7 +94,7 @@ public class HomeGUI {
         return frame;
     }
 
-    public void setPanel(String target){
+    public void setPanel(String target) {
         panelMap.get(target).refresh();
         layout.show(mainPanel, target);
     }
