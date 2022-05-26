@@ -38,6 +38,7 @@ public class AnggotaHomePanel extends SistakaPanel {
         logoutButton.setFont(HomeGUI.fontGeneral);
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setForeground(new Color(149,149,149));
 
         peminjamanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         peminjamanButton.addActionListener(new ActionListener() {
@@ -78,7 +79,73 @@ public class AnggotaHomePanel extends SistakaPanel {
             }
         });
 
+        peminjamanButton.addMouseListener(new MouseAdapter() {
+            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
+            public void mouseEntered(MouseEvent event) {
+                peminjamanButton.setBackground(new Color(59,80,250));
+                peminjamanButton.setForeground(new Color(221,224,253));
+            }
+            public void mouseExited(MouseEvent event) {
+                peminjamanButton.setBackground(new Color(30,30,30));
+                peminjamanButton.setForeground(new Color(209,209,209));
+            }
+        });
+
+        pengembalianButton.addMouseListener(new MouseAdapter() {
+            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
+            public void mouseEntered(MouseEvent event) {
+                pengembalianButton.setBackground(new Color(59,80,250));
+                pengembalianButton.setForeground(new Color(221,224,253));
+            }
+            public void mouseExited(MouseEvent event) {
+                pengembalianButton.setBackground(new Color(30,30,30));
+                pengembalianButton.setForeground(new Color(209,209,209));
+            }
+        });
+
+        pembayaranDendaButton.addMouseListener(new MouseAdapter() {
+            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
+            public void mouseEntered(MouseEvent event) {
+                pembayaranDendaButton.setBackground(new Color(59,80,250));
+                pembayaranDendaButton.setForeground(new Color(221,224,253));
+            }
+            public void mouseExited(MouseEvent event) {
+                pembayaranDendaButton.setBackground(new Color(30,30,30));
+                pembayaranDendaButton.setForeground(new Color(209,209,209));
+            }
+        });
+
+        detailAnggotaButton.addMouseListener(new MouseAdapter() {
+            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
+            public void mouseEntered(MouseEvent event) {
+                detailAnggotaButton.setBackground(new Color(59,80,250));
+                detailAnggotaButton.setForeground(new Color(221,224,253));
+            }
+            public void mouseExited(MouseEvent event) {
+                detailAnggotaButton.setBackground(new Color(30,30,30));
+                detailAnggotaButton.setForeground(new Color(209,209,209));
+            }
+        });
+
+        logoutButton.addMouseListener(new MouseAdapter() {
+            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
+            public void mouseEntered(MouseEvent event) {
+                logoutButton.setBackground(new Color(59,80,250));
+                logoutButton.setForeground(new Color(221,224,253));
+            }
+            public void mouseExited(MouseEvent event) {
+                logoutButton.setBackground(new Color(30,30,30));
+                logoutButton.setForeground(new Color(209,209,209));
+            }
+        });
+
+
+
+
+
+
         this.setLayout(new GridLayout(6, 1, 0, 10));
+        this.setBackground(new Color(30,30,30));
 
         this.add(titleLabel);
         this.add(peminjamanButton);

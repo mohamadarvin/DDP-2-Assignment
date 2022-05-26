@@ -46,6 +46,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
         kembaliButton.setFont(HomeGUI.fontGeneral);
         labelDetailAnggota.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelPilihIdAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxIdAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -59,6 +60,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
         buttonPanel.add(kembaliButton);
 
         labelDetailAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelDetailAnggota.setForeground(new Color(0,255,0));
 
         lihatButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -67,7 +69,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
                     labelDetailAnggota.setText((SistakaNG.findAnggota(selectedIdAnggota)).detail());
                 } else {
                     JOptionPane.showMessageDialog(detailAnggotaPanel,
-                            String.format("Silahkan Masukkan ID Anggota!"));
+                            String.format("Silahkan Masukkan ID Anggota!"),"Warning",JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -96,6 +98,8 @@ public class DetailAnggotaPanel extends SistakaPanel {
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+
+        this.setBackground(new Color(30,30,30));
 
         this.add(titleLabel, gbc);
         gbc.gridy = 1;

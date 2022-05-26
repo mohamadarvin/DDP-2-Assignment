@@ -30,6 +30,7 @@ public class LoginPanel extends SistakaPanel {
         textId.setFont(HomeGUI.fontGeneral);
         loginButton.setFont(HomeGUI.fontGeneral);
 
+        idLabel.setForeground(new Color(0,255,0));
         idLabel.setHorizontalAlignment(JLabel.CENTER);
         idLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         textId.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -43,7 +44,7 @@ public class LoginPanel extends SistakaPanel {
 
                 Pengguna pengguna = SistakaNG.handleLogin(textId.getText());
                 if (textId.getText().equals("")) {
-                    JOptionPane.showMessageDialog(loginPanel, "Harap masukkan id anda pada kotak diatas!");
+                    JOptionPane.showMessageDialog(loginPanel, "Harap masukkan id anda pada kotak diatas!","Warning",JOptionPane.WARNING_MESSAGE);
                 }
 
                 else if (pengguna == null) {
@@ -75,12 +76,13 @@ public class LoginPanel extends SistakaPanel {
         });
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
 
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(idLabel);
-        this.add(Box.createRigidArea(new Dimension(0, 3)));
+        this.add(Box.createRigidArea(new Dimension(0, 10)));
         this.add(textId);
-        this.add(Box.createRigidArea(new Dimension(0, 3)));
+        this.add(Box.createRigidArea(new Dimension(0, 10)));
         this.add(loginButton);
 
     }

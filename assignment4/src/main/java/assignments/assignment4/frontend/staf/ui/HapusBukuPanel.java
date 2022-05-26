@@ -40,9 +40,11 @@ public class HapusBukuPanel extends SistakaPanel {
         hapusButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
   
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
+        LabelBuku.setForeground(new Color(0,255,0));
 
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         buttonPanel.add(hapusButton);
@@ -61,7 +63,7 @@ public class HapusBukuPanel extends SistakaPanel {
                     if (jumlahPeminjamBuku > 0) {
                         JOptionPane.showMessageDialog(hapusBukuPanel,
                                 String.format("Buku %s oleh %s tidak dapat dihapus karena sedang dipinjam", judulBuku,
-                                        penulisBuku));
+                                        penulisBuku),"Warning",JOptionPane.WARNING_MESSAGE);
                     } else {
                         SistakaNG.deleteBuku(selectedBoxFindBuku);
                         JOptionPane.showMessageDialog(hapusBukuPanel,
@@ -107,6 +109,7 @@ public class HapusBukuPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
 

@@ -34,7 +34,10 @@ public class PeringkatPanel extends SistakaPanel {
         labelRankingAnggota.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        labelRankingAnggota.setForeground(new Color(0,255,0));
         kembaliButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         buttonPanel.add(kembaliButton);
@@ -60,6 +63,7 @@ public class PeringkatPanel extends SistakaPanel {
         });
 
         this.setLayout(new GridBagLayout());
+        this.setBackground(new Color(30,30,30));
         GridBagConstraints gbc = new GridBagConstraints();
 
         this.add(titleLabel, gbc);

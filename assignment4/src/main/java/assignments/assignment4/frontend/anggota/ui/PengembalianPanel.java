@@ -56,8 +56,11 @@ public class PengembalianPanel extends SistakaPanel {
         textTanggalPengembalian.setMaximumSize(new Dimension(500, 25));
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setForeground(new Color(0,255,0));
         labelTanggalPengembalian.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelTanggalPengembalian.setForeground(new Color(0,255,0));
         labelBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelBuku.setForeground(new Color(0,255,0));
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -73,7 +76,7 @@ public class PengembalianPanel extends SistakaPanel {
                     if (!SistakaPanel.isDateValid(textTanggalPengembalian.getText())) {
 
                         JOptionPane.showMessageDialog(pengembalianPanel,
-                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"));
+                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"),"Warning",JOptionPane.WARNING_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(pengembalianPanel,
                                 String.format(
@@ -123,6 +126,7 @@ public class PengembalianPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
 
         this.add(Box.createRigidArea(new Dimension(0, 200)));
         this.add(titleLabel);

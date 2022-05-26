@@ -45,9 +45,14 @@ public class DaftarPeminjamPanel extends SistakaPanel {
         kembaliButton.setFont(HomeGUI.fontGeneral);
         labelDaftarPeminjamBuku.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         labelPilihBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelPilihBuku.setForeground(new Color(0,255,0));
         labelDaftarPeminjamBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelDaftarPeminjamBuku.setForeground(new Color(0,255,0));
+        
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setVerticalAlignment(JLabel.CENTER);
@@ -68,7 +73,7 @@ public class DaftarPeminjamPanel extends SistakaPanel {
                     labelDaftarPeminjamBuku.setText(selectedDaftarPeminjam);
                 } else {
                     JOptionPane.showMessageDialog(daftarPeminjamBukuPanel,
-                            String.format("Silahkan Memilih Buku"));
+                            String.format("Silahkan Memilih Buku"),"Warning",JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -99,6 +104,8 @@ public class DaftarPeminjamPanel extends SistakaPanel {
         // this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+
+        this.setBackground(new Color(30,30,30));
 
         this.add(titleLabel, gbc);
         gbc.gridy = 1;

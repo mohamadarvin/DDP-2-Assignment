@@ -42,7 +42,9 @@ public class PembayaranPanel extends SistakaPanel {
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setForeground(new Color(0,255,0));
         labelJumlahDenda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelJumlahDenda.setForeground(new Color(0,255,0));
         textDenda.setAlignmentX(Component.CENTER_ALIGNMENT);
         textDenda.setMaximumSize(new Dimension(500, 25));
 
@@ -52,7 +54,7 @@ public class PembayaranPanel extends SistakaPanel {
             public void actionPerformed(ActionEvent event) {
                 if (isNumeric(textDenda.getText()) == false) {
                     JOptionPane.showMessageDialog(pembayaranPanel,
-                            "Jumlah Bayar harus berupa angka!");
+                            "Jumlah Bayar harus berupa angka!","Warning",JOptionPane.WARNING_MESSAGE);
                 } else {
 
                     JOptionPane.showMessageDialog(pembayaranPanel,
@@ -98,6 +100,7 @@ public class PembayaranPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
 

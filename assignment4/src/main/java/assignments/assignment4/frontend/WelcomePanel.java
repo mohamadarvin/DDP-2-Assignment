@@ -9,9 +9,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class WelcomePanel extends SistakaPanel {
-    private  JLabel titleLabel;
+    private JLabel titleLabel;
     private JButton loginButton;
-    private JButton keluarButton ;
+    private JButton keluarButton;
 
     public WelcomePanel(HomeGUI homeGUI) {
         super(homeGUI);
@@ -23,53 +23,56 @@ public class WelcomePanel extends SistakaPanel {
         loginButton.setFont(HomeGUI.fontGeneral);
         keluarButton.setFont(HomeGUI.fontGeneral);
 
-        
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setForeground(new Color(0,255,0));
+        
 
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        loginButton.setMaximumSize(new Dimension(500,50));
+        loginButton.setMaximumSize(new Dimension(500, 50));
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // Ketika tombol diclick akan membuat object TambahMahasiswaGUI
                 homeGUI.setPanel("login");
-                
+
             }
         });
         loginButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                loginButton.setBackground(new Color(59,80,250));
-                loginButton.setForeground(new Color(221,224,253));
+                loginButton.setBackground(new Color(59, 80, 250));
+                loginButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                loginButton.setBackground(new Color(30,30,30));
-                loginButton.setForeground(new Color(209,209,209));
+                loginButton.setBackground(new Color(30, 30, 30));
+                loginButton.setForeground(new Color(209, 209, 209));
             }
         });
-        
-         keluarButton.addMouseListener(new MouseAdapter() {
+
+        keluarButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                keluarButton.setBackground(new Color(59,80,250));
-                keluarButton.setForeground(new Color(221,224,253));
+                keluarButton.setBackground(new Color(59, 80, 250));
+                keluarButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                keluarButton.setBackground(new Color(30,30,30));
-                keluarButton.setForeground(new Color(209,209,209));
+                keluarButton.setBackground(new Color(30, 30, 30));
+                keluarButton.setForeground(new Color(209, 209, 209));
             }
         });
         keluarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                
-                
-                homeGUI.exit();;
-                
+
+                homeGUI.exit();
+                ;
+
             }
         });
-
+        this.setBackground(new Color(30,30,30));
         keluarButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        keluarButton.setMaximumSize(new Dimension(500,50));
+        keluarButton.setMaximumSize(new Dimension(500, 50));
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -80,8 +83,6 @@ public class WelcomePanel extends SistakaPanel {
         this.add(loginButton);
         this.add(Box.createRigidArea(new Dimension(0, 15)));
         this.add(keluarButton);
-
-        
 
     }
 

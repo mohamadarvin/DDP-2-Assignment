@@ -66,8 +66,11 @@ public class TambahBukuPanel extends SistakaPanel {
         tambahButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         LabelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
+        LabelNama.setForeground(new Color(0,255,0));
 
         textNama.setAlignmentX(Component.CENTER_ALIGNMENT);
         textNama.setMaximumSize(new Dimension(500, 25));
@@ -84,12 +87,16 @@ public class TambahBukuPanel extends SistakaPanel {
         boxKategori.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         labelKategori.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelKategori.setForeground(new Color(0,255,0));
 
         labelPenerbit.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelPenerbit.setForeground(new Color(0,255,0));
 
         labelPeulis.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelPeulis.setForeground(new Color(0,255,0));
 
         labelStok.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelStok.setForeground(new Color(0,255,0));
 
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         buttonPanel.add(tambahButton);
@@ -105,12 +112,12 @@ public class TambahBukuPanel extends SistakaPanel {
 
                     if (textStok.getText().equals("") || Integer.parseInt(textStok.getText()) <= 0) {
                         JOptionPane.showMessageDialog(tambahBukuPanel,
-                                String.format("Stok harus lebih dari 0"));
+                                String.format("Stok harus lebih dari 0"),"Warning",JOptionPane.WARNING_MESSAGE);
                     } else if (SistakaNG.findBuku(textNama.getText(), textPenulis.getText()) != null) {
                         JOptionPane.showMessageDialog(tambahBukuPanel,
                                 String.format("Buku %s oleh %s sudah pernah ditambahkan",
                                         SistakaNG.findBuku(textNama.getText(), textPenulis.getText()).getJudul(),
-                                        SistakaNG.findBuku(textNama.getText(), textPenulis.getText()).getPenulis()));
+                                        SistakaNG.findBuku(textNama.getText(), textPenulis.getText()).getPenulis()),"Warning",JOptionPane.WARNING_MESSAGE);
                     } else {
                         SistakaNG.addBuku(textNama.getText(), textPenulis.getText(), textPenerbit.getText(),
                                 boxKategori.getSelectedItem().toString(), Integer.parseInt(textStok.getText()));
@@ -165,6 +172,7 @@ public class TambahBukuPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
         this.add(Box.createRigidArea(new Dimension(0, 200)));
         this.add(titleLabel);
 

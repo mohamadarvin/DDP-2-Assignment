@@ -45,14 +45,16 @@ public class TambahKategoriPanel extends SistakaPanel {
         tambahButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
-
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelNama.setForeground(new Color(0,255,0));
         textNama.setAlignmentX(Component.CENTER_ALIGNMENT);
         textNama.setMaximumSize(new Dimension(500, 25));
 
         labelPoin.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelPoin.setForeground(new Color(0,255,0));
 
         textPoin.setAlignmentX(Component.CENTER_ALIGNMENT);
         textPoin.setMaximumSize(new Dimension(500, 25));
@@ -61,12 +63,12 @@ public class TambahKategoriPanel extends SistakaPanel {
         tambahButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (textPoin.getText().equals("")) {
-                    JOptionPane.showMessageDialog(tambahKategoriPanel, "Mohon isi seluruh Field");
+                    JOptionPane.showMessageDialog(tambahKategoriPanel, "Mohon isi Field Poin","Warning",JOptionPane.WARNING_MESSAGE);
                 }
 
                 else if (SistakaNG.findKategori(textNama.getText()) != null) {
                     JOptionPane.showMessageDialog(tambahKategoriPanel,
-                            String.format("Kategori %s sudah pernah ditambahkan!", textNama.getText()));
+                            String.format("Kategori %s sudah pernah ditambahkan!", textNama.getText()),"Warning",JOptionPane.WARNING_MESSAGE);
 
                 } else {
                     SistakaNG.addKategori(textNama.getText(), Integer.parseInt(textPoin.getText()));
@@ -122,6 +124,7 @@ public class TambahKategoriPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
 

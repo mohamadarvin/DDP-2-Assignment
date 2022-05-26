@@ -62,16 +62,21 @@ public class TambahMahasiswaPanel extends SistakaPanel {
         labelAngkatan.setFont(HomeGUI.fontGeneral);
         boxProdi.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelNama.setForeground(new Color(0,255,0));
 
         labelAngkatan.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelAngkatan.setForeground(new Color(0,255,0));
 
         labelProdi.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelProdi.setForeground(new Color(0,255,0));
 
         labelTanggalLahir.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelTanggalLahir.setForeground(new Color(0,255,0));
 
         textNama.setAlignmentX(Component.CENTER_ALIGNMENT);
         textNama.setMaximumSize(new Dimension(500, 25));
@@ -98,7 +103,7 @@ public class TambahMahasiswaPanel extends SistakaPanel {
                         boxProdi.getSelectedItem().toString(), textAngkatan.getText());
                 if (textNama.getText().equals("") || penambahanMahasiswa == null) {
                     JOptionPane.showMessageDialog(tambahmahasiswaPanel,
-                            "Tidak dapat menambahkan anggota silahkan periksa kembali input anda!");
+                            "Tidak dapat menambahkan anggota silahkan periksa kembali input anda!","Warning",JOptionPane.WARNING_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(tambahmahasiswaPanel,
                             String.format("Berhasil menambahkan mahasiswa dengan id %s",
@@ -149,6 +154,7 @@ public class TambahMahasiswaPanel extends SistakaPanel {
         });
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
 
         this.add(Box.createRigidArea(new Dimension(0, 200)));
         this.add(titleLabel);

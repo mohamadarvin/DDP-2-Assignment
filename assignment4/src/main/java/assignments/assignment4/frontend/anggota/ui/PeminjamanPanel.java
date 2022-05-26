@@ -60,9 +60,12 @@ public class PeminjamanPanel extends SistakaPanel {
         textTanggalPeminjaman.setMaximumSize(new Dimension(500, 25));
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setForeground(new Color(0,255,0));
         labelBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelBuku.setForeground(new Color(0,255,0));
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelTanggalPeminjaman.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelTanggalPeminjaman.setForeground(new Color(0,255,0));
         textTanggalPeminjaman.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -78,7 +81,7 @@ public class PeminjamanPanel extends SistakaPanel {
                     if (!SistakaPanel.isDateValid(textTanggalPeminjaman.getText())) {
 
                         JOptionPane.showMessageDialog(peminjamanPanel,
-                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"));
+                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"),"Warning",JOptionPane.WARNING_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(peminjamanPanel,
                                 String.format(
@@ -87,7 +90,6 @@ public class PeminjamanPanel extends SistakaPanel {
                         textTanggalPeminjaman.setText("");
                     }
 
-                   
                 }
 
             }
@@ -103,29 +105,31 @@ public class PeminjamanPanel extends SistakaPanel {
         pinjamButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                pinjamButton.setBackground(new Color(59,80,250));
-                pinjamButton.setForeground(new Color(221,224,253));
+                pinjamButton.setBackground(new Color(59, 80, 250));
+                pinjamButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                pinjamButton.setBackground(new Color(30,30,30));
-                pinjamButton.setForeground(new Color(209,209,209));
+                pinjamButton.setBackground(new Color(30, 30, 30));
+                pinjamButton.setForeground(new Color(209, 209, 209));
             }
         });
 
         kembaliButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                kembaliButton.setBackground(new Color(59,80,250));
-                kembaliButton.setForeground(new Color(221,224,253));
+                kembaliButton.setBackground(new Color(59, 80, 250));
+                kembaliButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                kembaliButton.setBackground(new Color(30,30,30));
-                kembaliButton.setForeground(new Color(209,209,209));
+                kembaliButton.setBackground(new Color(30, 30, 30));
+                kembaliButton.setForeground(new Color(209, 209, 209));
             }
         });
 
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30, 30, 30));
 
         this.add(Box.createRigidArea(new Dimension(0, 200)));
         this.add(titleLabel);

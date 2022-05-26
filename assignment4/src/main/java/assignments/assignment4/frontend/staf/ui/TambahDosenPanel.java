@@ -38,9 +38,11 @@ public class TambahDosenPanel extends SistakaPanel {
         tambahButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
+        titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelNama.setForeground(new Color(0,255,0));
         textNama.setAlignmentX(Component.CENTER_ALIGNMENT);
         textNama.setMaximumSize(new Dimension(500, 25));
 
@@ -50,7 +52,7 @@ public class TambahDosenPanel extends SistakaPanel {
             public void actionPerformed(ActionEvent event) {
                 if (textNama.getText().equals("")) {
                     JOptionPane.showMessageDialog(tambahDosenPanel,
-                            "Tidak dapat menambahkan Dosen silah periksa kembali input anda!");
+                            "Tidak dapat menambahkan Dosen silah periksa kembali input anda!","Warning",JOptionPane.WARNING_MESSAGE);
                 } else {
                     SistakaNG.addDosen(textNama.getText());
                     JOptionPane.showMessageDialog(tambahDosenPanel,
@@ -98,6 +100,7 @@ public class TambahDosenPanel extends SistakaPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(new Color(30,30,30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
 
