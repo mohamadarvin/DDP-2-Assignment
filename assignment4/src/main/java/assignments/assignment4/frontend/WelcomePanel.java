@@ -16,27 +16,42 @@ public class WelcomePanel extends SistakaPanel {
     public WelcomePanel(HomeGUI homeGUI) {
         super(homeGUI);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // Text label dan button
         titleLabel = new JLabel("Welcome to SistakaNG");
         loginButton = new JButton(String.format("Login "));
         keluarButton = new JButton(String.format("Keluar"));
+
+        // Set Font
         titleLabel.setFont(HomeGUI.fontTitle);
         loginButton.setFont(HomeGUI.fontGeneral);
         keluarButton.setFont(HomeGUI.fontGeneral);
 
+        // Alignmet dan warna text
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setForeground(new Color(0,255,0));
-        
-
+        titleLabel.setForeground(new Color(0, 255, 0));
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.setMaximumSize(new Dimension(500, 50));
+
+        // Login
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                // Ketika tombol diclick akan membuat object TambahMahasiswaGUI
                 homeGUI.setPanel("login");
+            }
+        });
+
+        // Keluar
+        keluarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+
+                homeGUI.exit();
+                ;
 
             }
         });
+
+        // Warna login button ketika mneggunakan mouse
         loginButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
@@ -50,6 +65,7 @@ public class WelcomePanel extends SistakaPanel {
             }
         });
 
+        // Warna keluar button ketika mneggunakan mouse
         keluarButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
@@ -62,23 +78,14 @@ public class WelcomePanel extends SistakaPanel {
                 keluarButton.setForeground(new Color(209, 209, 209));
             }
         });
-        keluarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
 
-                homeGUI.exit();
-                ;
-
-            }
-        });
-        this.setBackground(new Color(30,30,30));
+        // Formatting frame panel
+        this.setBackground(new Color(30, 30, 30));
         keluarButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         keluarButton.setMaximumSize(new Dimension(500, 50));
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
-
         this.add(Box.createRigidArea(new Dimension(0, 250)));
         this.add(loginButton);
         this.add(Box.createRigidArea(new Dimension(0, 15)));

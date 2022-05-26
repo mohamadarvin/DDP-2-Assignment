@@ -28,6 +28,8 @@ public class TambahKategoriPanel extends SistakaPanel {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
         tambahKategoriPanel = this;
+
+        // text pada labeel dan button
         titleLabel = new JLabel("Tambah Kategori");
         labelNama = new JLabel("Nama");
         textNama = new JTextField();
@@ -37,6 +39,7 @@ public class TambahKategoriPanel extends SistakaPanel {
         kembaliButton = new JButton(String.format("Kembali"));
         buttonPanel = new JPanel();
 
+        // Set Font
         titleLabel.setFont(HomeGUI.fontTitle);
         labelNama.setFont(HomeGUI.fontGeneral);
         textNama.setFont(HomeGUI.fontGeneral);
@@ -45,30 +48,32 @@ public class TambahKategoriPanel extends SistakaPanel {
         tambahButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
-        titleLabel.setForeground(new Color(0,255,0));
+        // Set Alignment dan warna
+        titleLabel.setForeground(new Color(0, 255, 0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelNama.setForeground(new Color(0,255,0));
+        labelNama.setForeground(new Color(0, 255, 0));
         textNama.setAlignmentX(Component.CENTER_ALIGNMENT);
         textNama.setMaximumSize(new Dimension(500, 25));
-
         labelPoin.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelPoin.setForeground(new Color(0,255,0));
-
+        labelPoin.setForeground(new Color(0, 255, 0));
         textPoin.setAlignmentX(Component.CENTER_ALIGNMENT);
         textPoin.setMaximumSize(new Dimension(500, 25));
 
-        
+        // Klik tambah button
         tambahButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                // Jika input tidak valid
                 if (textPoin.getText().equals("")) {
-                    JOptionPane.showMessageDialog(tambahKategoriPanel, "Mohon isi Field Poin","Warning",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(tambahKategoriPanel, "Mohon isi Field Poin", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                 }
 
+                // Jika sudah pernah ditambahkan
                 else if (SistakaNG.findKategori(textNama.getText()) != null) {
                     JOptionPane.showMessageDialog(tambahKategoriPanel,
-                            String.format("Kategori %s sudah pernah ditambahkan!", textNama.getText()),"Warning",JOptionPane.WARNING_MESSAGE);
+                            String.format("Kategori %s sudah pernah ditambahkan!", textNama.getText()), "Warning",
+                            JOptionPane.WARNING_MESSAGE);
 
                 } else {
                     SistakaNG.addKategori(textNama.getText(), Integer.parseInt(textPoin.getText()));
@@ -79,55 +84,57 @@ public class TambahKategoriPanel extends SistakaPanel {
                     main.setPanel("staf");
                     textNama.setText("");
                     textPoin.setText("");
-
                 }
-
             }
         });
+
+        // Layout button panel beserta isinya
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         buttonPanel.add(tambahButton);
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         buttonPanel.add(kembaliButton);
+
+        // Klik kembali button
         kembaliButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 main.setPanel("staf");
                 textNama.setText("");
                 textPoin.setText("");
-                
 
             }
         });
 
+        // Warna button ketika mneggunakan mouse
         tambahButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                tambahButton.setBackground(new Color(59,80,250));
-                tambahButton.setForeground(new Color(221,224,253));
+                tambahButton.setBackground(new Color(59, 80, 250));
+                tambahButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                tambahButton.setBackground(new Color(30,30,30));
-                tambahButton.setForeground(new Color(209,209,209));
+                tambahButton.setBackground(new Color(30, 30, 30));
+                tambahButton.setForeground(new Color(209, 209, 209));
             }
         });
-
         kembaliButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                kembaliButton.setBackground(new Color(59,80,250));
-                kembaliButton.setForeground(new Color(221,224,253));
+                kembaliButton.setBackground(new Color(59, 80, 250));
+                kembaliButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                kembaliButton.setBackground(new Color(30,30,30));
-                kembaliButton.setForeground(new Color(209,209,209));
+                kembaliButton.setBackground(new Color(30, 30, 30));
+                kembaliButton.setForeground(new Color(209, 209, 209));
             }
         });
 
-
+        // Formatting frame panel
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(titleLabel);
-
         this.add(labelNama);
         this.add(Box.createRigidArea(new Dimension(0, 3)));
         this.add(textNama);

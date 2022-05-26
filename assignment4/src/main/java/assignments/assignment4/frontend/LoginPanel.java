@@ -20,31 +20,35 @@ public class LoginPanel extends SistakaPanel {
     public LoginPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // Text pada label dan button
         loginPanel = this;
         idLabel = new JLabel();
         idLabel.setText("Masukkan id anda untuk login ke sistem");
         textId = new JTextField();
         loginButton = new JButton(String.format("Login "));
 
+        // Set Font
         idLabel.setFont(HomeGUI.fontGeneral);
         textId.setFont(HomeGUI.fontGeneral);
         loginButton.setFont(HomeGUI.fontGeneral);
 
-        idLabel.setForeground(new Color(0,255,0));
+        // Set Alignment dan warna
+        idLabel.setForeground(new Color(0, 255, 0));
         idLabel.setHorizontalAlignment(JLabel.CENTER);
         idLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         textId.setAlignmentX(Component.CENTER_ALIGNMENT);
         textId.setMaximumSize(new Dimension(500, 25));
-
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        
+        // Klik tombol Login
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                // Ketika tombol diclick akan membuat object TambahMahasiswaGUI
 
                 Pengguna pengguna = SistakaNG.handleLogin(textId.getText());
                 if (textId.getText().equals("")) {
-                    JOptionPane.showMessageDialog(loginPanel, "Harap masukkan id anda pada kotak diatas!","Warning",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(loginPanel, "Harap masukkan id anda pada kotak diatas!", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                 }
 
                 else if (pengguna == null) {
@@ -63,21 +67,22 @@ public class LoginPanel extends SistakaPanel {
             }
         });
 
+        // Warna login button ketika mneggunakan mouse
         loginButton.addMouseListener(new MouseAdapter() {
-            // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                loginButton.setBackground(new Color(59,80,250));
-                loginButton.setForeground(new Color(221,224,253));
+                loginButton.setBackground(new Color(59, 80, 250));
+                loginButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                loginButton.setBackground(new Color(30,30,30));
-                loginButton.setForeground(new Color(209,209,209));
+                loginButton.setBackground(new Color(30, 30, 30));
+                loginButton.setForeground(new Color(209, 209, 209));
             }
         });
 
+        // Formatting frame panel
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(30,30,30));
-
+        this.setBackground(new Color(30, 30, 30));
         this.add(Box.createRigidArea(new Dimension(0, 300)));
         this.add(idLabel);
         this.add(Box.createRigidArea(new Dimension(0, 10)));
