@@ -30,6 +30,8 @@ public class DetailUserPanel extends SistakaPanel {
     public DetailUserPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // set text , set font, dan set alignment
         titleLabel = new JLabel("Lihat Detail Anggota");
         kembaliButton = new JButton("Kembali");
         labelDetailAnggota = new JLabel("", JLabel.CENTER);
@@ -39,12 +41,12 @@ public class DetailUserPanel extends SistakaPanel {
         labelDetailAnggota.setFont(HomeGUI.fontGeneral);
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
 
         kembaliButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         labelDetailAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelDetailAnggota.setForeground(new Color(0,255,0));
+        labelDetailAnggota.setForeground(new Color(0, 255, 0));
 
         kembaliButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -66,9 +68,10 @@ public class DetailUserPanel extends SistakaPanel {
             }
         });
 
+        // formatting Frame paenl layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
 
         this.add(titleLabel, gbc);
         gbc.gridy = 1;

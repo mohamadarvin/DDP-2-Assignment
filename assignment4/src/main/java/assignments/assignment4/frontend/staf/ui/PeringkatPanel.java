@@ -24,24 +24,26 @@ public class PeringkatPanel extends SistakaPanel {
     public PeringkatPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // Set text pada label dan button
         titleLabel = new JLabel("Peringkat");
         labelRankingAnggota = new JLabel("", JLabel.CENTER);
         kembaliButton = new JButton("Kembali");
-
         buttonPanel = new JPanel();
 
+        // set font,alignment, dan warna
         titleLabel.setFont(HomeGUI.fontTitle);
         labelRankingAnggota.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
-
         titleLabel.setForeground(new Color(0,255,0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         labelRankingAnggota.setForeground(new Color(0,255,0));
         kembaliButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        // Layout button panel
         buttonPanel.add(kembaliButton);
 
+        // klik kembali button
         kembaliButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 main.setPanel("staf");
@@ -61,6 +63,8 @@ public class PeringkatPanel extends SistakaPanel {
                 kembaliButton.setForeground(new Color(209, 209, 209));
             }
         });
+
+        // Formatting frame panel
 
         this.setLayout(new GridBagLayout());
         this.setBackground(new Color(30,30,30));

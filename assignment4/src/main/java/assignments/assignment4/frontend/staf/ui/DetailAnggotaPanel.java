@@ -31,6 +31,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
 
+        // set text , set font, dan set alignment
         titleLabel = new JLabel("Lihat Detail Anggota");
         labelPilihIdAnggota = new JLabel("Pilih ID Anggota");
         boxIdAnggota = new JComboBox<String>();
@@ -45,23 +46,22 @@ public class DetailAnggotaPanel extends SistakaPanel {
         lihatButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
         labelDetailAnggota.setFont(HomeGUI.fontGeneral);
-
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelPilihIdAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxIdAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         boxIdAnggota.setMaximumSize(new Dimension(50, 25));
-
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         buttonPanel.add(lihatButton);
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         buttonPanel.add(kembaliButton);
 
         labelDetailAnggota.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelDetailAnggota.setForeground(new Color(0,255,0));
+        labelDetailAnggota.setForeground(new Color(0, 255, 0));
 
+        // Jika tombol di klik
+        
         lihatButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (boxIdAnggota.getItemCount() > 0) {
@@ -69,7 +69,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
                     labelDetailAnggota.setText((SistakaNG.findAnggota(selectedIdAnggota)).detail());
                 } else {
                     JOptionPane.showMessageDialog(detailAnggotaPanel,
-                            String.format("Silahkan Masukkan ID Anggota!"),"Warning",JOptionPane.WARNING_MESSAGE);
+                            String.format("Silahkan Masukkan ID Anggota!"), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -96,10 +96,11 @@ public class DetailAnggotaPanel extends SistakaPanel {
             }
         });
 
+        // Frame paenl layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
 
         this.add(titleLabel, gbc);
         gbc.gridy = 1;

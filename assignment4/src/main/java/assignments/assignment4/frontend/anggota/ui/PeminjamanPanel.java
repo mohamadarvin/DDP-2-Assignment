@@ -34,6 +34,8 @@ public class PeminjamanPanel extends SistakaPanel {
     public PeminjamanPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // set text , set font, dan set alignment
         peminjamanPanel = this;
         titleLabel = new JLabel("Pinjam Buku");
         labelBuku = new JLabel("Buku");
@@ -60,12 +62,12 @@ public class PeminjamanPanel extends SistakaPanel {
         textTanggalPeminjaman.setMaximumSize(new Dimension(500, 25));
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
         labelBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelBuku.setForeground(new Color(0,255,0));
+        labelBuku.setForeground(new Color(0, 255, 0));
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelTanggalPeminjaman.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelTanggalPeminjaman.setForeground(new Color(0,255,0));
+        labelTanggalPeminjaman.setForeground(new Color(0, 255, 0));
         textTanggalPeminjaman.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -81,7 +83,8 @@ public class PeminjamanPanel extends SistakaPanel {
                     if (!SistakaPanel.isDateValid(textTanggalPeminjaman.getText())) {
 
                         JOptionPane.showMessageDialog(peminjamanPanel,
-                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"),"Warning",JOptionPane.WARNING_MESSAGE);
+                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"), "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(peminjamanPanel,
                                 String.format(
@@ -128,6 +131,7 @@ public class PeminjamanPanel extends SistakaPanel {
             }
         });
 
+        // formatting Frame paenl layout
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(new Color(30, 30, 30));
 

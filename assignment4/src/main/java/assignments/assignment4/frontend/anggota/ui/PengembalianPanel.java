@@ -30,6 +30,8 @@ public class PengembalianPanel extends SistakaPanel {
     public PengembalianPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // set text , set font, dan set alignment
         pengembalianPanel = this;
         titleLabel = new JLabel("Pengembalian Buku");
         labelBuku = new JLabel("Buku");
@@ -56,11 +58,11 @@ public class PengembalianPanel extends SistakaPanel {
         textTanggalPengembalian.setMaximumSize(new Dimension(500, 25));
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
         labelTanggalPengembalian.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelTanggalPengembalian.setForeground(new Color(0,255,0));
+        labelTanggalPengembalian.setForeground(new Color(0, 255, 0));
         labelBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelBuku.setForeground(new Color(0,255,0));
+        labelBuku.setForeground(new Color(0, 255, 0));
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -76,7 +78,8 @@ public class PengembalianPanel extends SistakaPanel {
                     if (!SistakaPanel.isDateValid(textTanggalPengembalian.getText())) {
 
                         JOptionPane.showMessageDialog(pengembalianPanel,
-                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"),"Warning",JOptionPane.WARNING_MESSAGE);
+                                String.format("Tanggal yang dimasukkan harus dalam format DD/MM/YYYY"), "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(pengembalianPanel,
                                 String.format(
@@ -86,7 +89,6 @@ public class PengembalianPanel extends SistakaPanel {
                         textTanggalPengembalian.setText("");
 
                     }
-
 
                 }
 
@@ -103,30 +105,32 @@ public class PengembalianPanel extends SistakaPanel {
         kembalikanButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                kembalikanButton.setBackground(new Color(59,80,250));
-                kembalikanButton.setForeground(new Color(221,224,253));
+                kembalikanButton.setBackground(new Color(59, 80, 250));
+                kembalikanButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                kembalikanButton.setBackground(new Color(30,30,30));
-                kembalikanButton.setForeground(new Color(209,209,209));
+                kembalikanButton.setBackground(new Color(30, 30, 30));
+                kembalikanButton.setForeground(new Color(209, 209, 209));
             }
         });
 
         kembaliButton.addMouseListener(new MouseAdapter() {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
-                kembaliButton.setBackground(new Color(59,80,250));
-                kembaliButton.setForeground(new Color(221,224,253));
+                kembaliButton.setBackground(new Color(59, 80, 250));
+                kembaliButton.setForeground(new Color(221, 224, 253));
             }
+
             public void mouseExited(MouseEvent event) {
-                kembaliButton.setBackground(new Color(30,30,30));
-                kembaliButton.setForeground(new Color(209,209,209));
+                kembaliButton.setBackground(new Color(30, 30, 30));
+                kembaliButton.setForeground(new Color(209, 209, 209));
             }
         });
 
-
+        // formatting Frame paenl layout
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
 
         this.add(Box.createRigidArea(new Dimension(0, 200)));
         this.add(titleLabel);

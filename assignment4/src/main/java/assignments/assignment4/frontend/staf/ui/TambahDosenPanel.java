@@ -41,7 +41,7 @@ public class TambahDosenPanel extends SistakaPanel {
         tambahButton.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
 
-        // Set alignment danwarna
+        // Set alignment dan warna
         titleLabel.setForeground(new Color(0, 255, 0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelNama.setAlignmentX(Component.CENTER_ALIGNMENT);

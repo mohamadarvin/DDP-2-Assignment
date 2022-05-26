@@ -29,6 +29,8 @@ public class DaftarPeminjamPanel extends SistakaPanel {
     public DaftarPeminjamPanel(HomeGUI main) {
         super(main);
         // TODO: Implementasikan hal-hal yang diperlukan
+
+        // set text , set font, dan set alignment
         daftarPeminjamBukuPanel = this;
         titleLabel = new JLabel("Lihat Daftar Peminjam");
         labelPilihBuku = new JLabel("Pilih buku");
@@ -45,14 +47,14 @@ public class DaftarPeminjamPanel extends SistakaPanel {
         kembaliButton.setFont(HomeGUI.fontGeneral);
         labelDaftarPeminjamBuku.setFont(HomeGUI.fontGeneral);
 
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         labelPilihBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelPilihBuku.setForeground(new Color(0,255,0));
+        labelPilihBuku.setForeground(new Color(0, 255, 0));
         labelDaftarPeminjamBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelDaftarPeminjamBuku.setForeground(new Color(0,255,0));
-        
+        labelDaftarPeminjamBuku.setForeground(new Color(0, 255, 0));
+
         boxBuku.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setVerticalAlignment(JLabel.CENTER);
@@ -61,6 +63,8 @@ public class DaftarPeminjamPanel extends SistakaPanel {
         buttonPanel.add(lihatButton);
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         buttonPanel.add(kembaliButton);
+
+        // Jika tombol di klik
 
         lihatButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -73,7 +77,7 @@ public class DaftarPeminjamPanel extends SistakaPanel {
                     labelDaftarPeminjamBuku.setText(selectedDaftarPeminjam);
                 } else {
                     JOptionPane.showMessageDialog(daftarPeminjamBukuPanel,
-                            String.format("Silahkan Memilih Buku"),"Warning",JOptionPane.WARNING_MESSAGE);
+                            String.format("Silahkan Memilih Buku"), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -101,11 +105,11 @@ public class DaftarPeminjamPanel extends SistakaPanel {
             }
         });
 
-        // this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        // formatting Frame paenl layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
 
         this.add(titleLabel, gbc);
         gbc.gridy = 1;
