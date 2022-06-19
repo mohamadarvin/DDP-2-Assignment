@@ -2,8 +2,6 @@ package assignments.assignment4.frontend;
 
 import javax.swing.*;
 
-import assignments.assignment4.SistakaNGUI;
-
 import java.awt.*;
 
 import java.awt.event.*;

@@ -1,16 +1,14 @@
 package assignments.assignment4.frontend.staf.ui;
 
 import assignments.assignment4.backend.SistakaNG;
-import assignments.assignment4.backend.pengguna.Anggota;
+
 import assignments.assignment4.frontend.HomeGUI;
 import assignments.assignment4.frontend.SistakaPanel;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicSliderUI.ComponentHandler;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.awt.event.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -61,7 +59,7 @@ public class DetailAnggotaPanel extends SistakaPanel {
         labelDetailAnggota.setForeground(new Color(0, 255, 0));
 
         // Jika tombol di klik
-        
+
         lihatButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (boxIdAnggota.getItemCount() > 0) {

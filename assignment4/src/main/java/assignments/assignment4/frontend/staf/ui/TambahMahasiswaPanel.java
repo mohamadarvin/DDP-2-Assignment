@@ -1,19 +1,15 @@
 package assignments.assignment4.frontend.staf.ui;
 
 import assignments.assignment4.backend.SistakaNG;
-import assignments.assignment4.backend.pengguna.Anggota;
+
 import assignments.assignment4.backend.pengguna.IdGenerator;
 import assignments.assignment4.backend.pengguna.Mahasiswa;
 import assignments.assignment4.frontend.HomeGUI;
 import assignments.assignment4.frontend.SistakaPanel;
 
-import javax.annotation.processing.Generated;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+
 import java.awt.event.*;
 
 // TODO: Implementasikan hal-hal yang diperlukan
@@ -103,7 +99,7 @@ public class TambahMahasiswaPanel extends SistakaPanel {
                         boxProdi.getSelectedItem().toString(), textAngkatan.getText());
 
                 // Jika input kurang tepat
-                if (textNama.getText().equals("") || penambahanMahasiswa == null) {
+                if (penambahanMahasiswa == null) {
                     JOptionPane.showMessageDialog(tambahmahasiswaPanel,
                             "Tidak dapat menambahkan anggota silahkan periksa kembali input anda!", "Warning",
                             JOptionPane.WARNING_MESSAGE);
@@ -139,7 +135,7 @@ public class TambahMahasiswaPanel extends SistakaPanel {
             // Ubah warna ketika hover dan kembalikan warna setelah sudah tidak di hover
             public void mouseEntered(MouseEvent event) {
                 tambahButton.setBackground(new Color(59, 80, 250));
-                tambahButtonf.setForeground(new Color(221, 224, 253));
+                tambahButton.setForeground(new Color(221, 224, 253));
             }
 
             public void mouseExited(MouseEvent event) {

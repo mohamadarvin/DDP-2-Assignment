@@ -6,9 +6,7 @@ import assignments.assignment4.frontend.SistakaPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.*;
+
 import java.awt.event.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -35,9 +33,9 @@ public class PeringkatPanel extends SistakaPanel {
         titleLabel.setFont(HomeGUI.fontTitle);
         labelRankingAnggota.setFont(HomeGUI.fontGeneral);
         kembaliButton.setFont(HomeGUI.fontGeneral);
-        titleLabel.setForeground(new Color(0,255,0));
+        titleLabel.setForeground(new Color(0, 255, 0));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        labelRankingAnggota.setForeground(new Color(0,255,0));
+        labelRankingAnggota.setForeground(new Color(0, 255, 0));
         kembaliButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Layout button panel
@@ -67,7 +65,7 @@ public class PeringkatPanel extends SistakaPanel {
         // Formatting frame panel
 
         this.setLayout(new GridBagLayout());
-        this.setBackground(new Color(30,30,30));
+        this.setBackground(new Color(30, 30, 30));
         GridBagConstraints gbc = new GridBagConstraints();
 
         this.add(titleLabel, gbc);

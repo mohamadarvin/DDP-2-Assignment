@@ -1,8 +1,7 @@
 package assignments.assignment4.frontend.staf.ui;
 
-import assignments.assignment4.backend.SistakaNG;
 import assignments.assignment4.frontend.HomeGUI;
-import assignments.assignment4.frontend.LoginPanel;
+
 import assignments.assignment4.frontend.SistakaPanel;
 
 import javax.swing.*;

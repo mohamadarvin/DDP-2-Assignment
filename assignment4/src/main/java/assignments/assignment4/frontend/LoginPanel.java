@@ -3,7 +3,6 @@ package assignments.assignment4.frontend;
 import assignments.assignment4.backend.SistakaNG;
 import assignments.assignment4.backend.pengguna.Pengguna;
 import assignments.assignment4.backend.pengguna.Staf;
-import assignments.assignment4.frontend.HomeGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +39,7 @@ public class LoginPanel extends SistakaPanel {
         textId.setAlignmentX(Component.CENTER_ALIGNMENT);
         textId.setMaximumSize(new Dimension(500, 25));
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         // Klik tombol Login
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {

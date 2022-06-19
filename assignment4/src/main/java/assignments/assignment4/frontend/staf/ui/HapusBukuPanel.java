@@ -7,8 +7,7 @@ import assignments.assignment4.frontend.SistakaPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.awt.event.*;
 
 // TODO: Implementasikan hal-hal yang diperlukan
@@ -60,10 +59,10 @@ public class HapusBukuPanel extends SistakaPanel {
                     String judulBuku = splitBoxBuku[0];
                     String penulisBuku = splitBoxBuku[1];
                     Buku selectedBoxFindBuku = SistakaNG.findBuku(judulBuku, penulisBuku);
-                    int jumlahPeminjamBuku = selectedBoxFindBuku.getDaftarPeminjam().size();
+                    int stokBukuSekarang = selectedBoxFindBuku.getStok();
 
                     // Buku sedang dipinjam
-                    if (jumlahPeminjamBuku > 0) {
+                    if (stokBukuSekarang != selectedBoxFindBuku.getStokAwal()) {
                         JOptionPane.showMessageDialog(hapusBukuPanel,
                                 String.format("Buku %s oleh %s tidak dapat dihapus karena sedang dipinjam", judulBuku,
                                         penulisBuku),
